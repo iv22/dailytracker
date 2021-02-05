@@ -29,8 +29,8 @@ gem 'slim-rails', '~> 3.2.0'
 group :development, :test do
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails', '~> 2.7'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Call 'byebug' anywhere in the code to stop execution
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Use Pry as your rails console
   gem 'pry-rails'
   # rspec-rails is a testing framework for Rails 5+
@@ -41,7 +41,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   # Faker is used to easily generate fake data
   gem 'faker', '~> 2.15', '>= 2.15.1'
-  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners 
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners
   # to test common Rails functionality
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
 end
