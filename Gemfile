@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  # Shim to load environment variables from .env into ENV in development.
+  gem 'dotenv-rails', '~> 2.7'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use Pry as your rails console
@@ -60,6 +62,12 @@ group :development do
   gem 'rubocop-packaging', '~> 0.5.1'
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
   gem 'rubocop-performance', '~> 1.9', '>= 1.9.2'
+  # RubyCritic is a tool that wraps around various static analysis gems to provide a quality report of your Ruby code
+  gem 'rubycritic', '~> 4.6'
+  # Brakeman detects security vulnerabilities in Ruby on Rails applications via static analysis
+  gem 'brakeman', '~> 5.0'
+  # a code metric tool for rails codes, written in Ruby
+  gem 'rails_best_practices', '~> 1.20'
 end
 
 group :test do 
@@ -68,14 +76,5 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# Trace your model actions and create activity lists
-gem 'hound', '~> 0.3.0'
-# RubyCritic is a tool that wraps around various static analysis gems to provide a quality report of your Ruby code
-gem 'rubycritic', '~> 4.6'
-# Brakeman detects security vulnerabilities in Ruby on Rails applications via static analysis
-gem 'brakeman', '~> 5.0'
-# a code metric tool for rails codes, written in Ruby
-gem 'rails_best_practices', '~> 1.20'
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
