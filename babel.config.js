@@ -1,5 +1,5 @@
 module.exports = function(api) {
-  var validEnv = ['development', 'test', 'production']
+  var validEnv = ['development', 'test', 'production'];
   var currentEnv = api.env();
   var isDevelopmentEnv = api.env('development');
   var isProductionEnv = api.env('production');
@@ -68,5 +68,5 @@ module.exports = function(api) {
         }
       ]
     ].filter(Boolean)
-  }
+  };
 }
