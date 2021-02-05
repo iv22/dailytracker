@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'slim-rails', '~> 3.2.0'
+
 group :development, :test do
   # Shim to load environment variables from .env into ENV in development.
   gem 'dotenv-rails', '~> 2.7'
