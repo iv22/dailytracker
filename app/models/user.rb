@@ -13,7 +13,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :enum
+#  role                   :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -24,7 +24,7 @@
 #  index_users_on_role                  (role)
 #
 class User < ApplicationRecord
-  enum role: { manager: 'manager', master: 'master', employee: 'employee' }
+  enum role: { manager: 0, master: 1, employee: 2 }
 
   validates :email, presence: true, uniqueness: true,
                     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }

@@ -13,7 +13,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :enum
+#  role                   :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
