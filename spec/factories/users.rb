@@ -29,16 +29,20 @@ FactoryBot.define do
     password { 'qwerty' }
     employee
 
-    trait :manager do
+    trait :admin do
       role { 0 }
     end
 
-    trait :master do
+    trait :manager do
       role { 1 }
     end
 
-    trait :employee do
+    trait :master do
       role { 2 }
+    end
+
+    trait :employee do
+      role { 3 }
     end
   end
 end

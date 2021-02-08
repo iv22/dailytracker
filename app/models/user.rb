@@ -24,7 +24,7 @@
 #  index_users_on_role                  (role)
 #
 class User < ApplicationRecord
-  enum role: { manager: 0, master: 1, employee: 2 }
+  enum role: { admin: 0, manager: 1, master: 2, employee: 3 }
 
   validates :role, presence: true
 
