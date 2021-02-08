@@ -10,7 +10,8 @@ if Rails.env.development?
     # same name.
     Annotate.set_defaults(
       'active_admin' => 'false', 'additional_file_patterns' => [],
-      'routes' => 'false', 'models' => 'true', 'position_in_routes' => 'before',
+      'routes' => 'false', 'models' => 'true',
+      'position_in_routes' => 'before',
       'position_in_class' => 'before', 'position_in_test' => 'before',
       'position_in_fixture' => 'before', 'position_in_factory' => 'before',
       'position_in_serializer' => 'before', 'show_foreign_keys' => 'true',

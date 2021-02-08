@@ -17,7 +17,7 @@ Devise.setup do |config|
   # config.secret_key = 'c56bce1f9ea91454594355ecbc2c2567a32a4c6e939e67b89d22e9
   # 1c1a6c606f679b22071653f5966ee68bbbddaeed513cf9227608303c4ed3de2a165a0e071e'
 
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'ok@example.com'
 
   require 'devise/orm/active_record'
 
