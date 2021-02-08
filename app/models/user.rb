@@ -13,7 +13,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer
+#  role                   :integer          not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -26,28 +26,10 @@
 class User < ApplicationRecord
   enum role: { manager: 0, master: 1, employee: 2 }
 
-  validates :email, presence: true, uniqueness: true,
-                    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   validates :role, presence: true
-  validate :password_validate
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
-
-  private
-
-  def password_validate
-    rules = {
-      ' must contain at least one lowercase letter' => /[a-z]+/,
-      ' must contain at least one uppercase letter' => /[A-Z]+/,
-      ' must contain at least one digit' => /\d+/,
-      ' length must be between 6..24' => /^[\w\W]{6,24}$/
-    }
-
-    rules.each do |message, regex|
-      errors.add(:password, message) unless password.match(regex)
-    end
-  end
 end

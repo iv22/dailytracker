@@ -13,7 +13,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer
+#  role                   :integer          not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -25,5 +25,20 @@
 #
 FactoryBot.define do
   factory :user do
+    email { 'admin@mail.ru' }
+    password { 'qwerty' }
+    employee
+
+    trait :manager do
+      role { 0 }
+    end
+
+    trait :master do
+      role { 1 }
+    end
+
+    trait :employee do
+      role { 2 }
+    end
   end
 end
