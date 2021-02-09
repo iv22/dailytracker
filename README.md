@@ -1,37 +1,46 @@
-ls![dailytracker logo]()
-
 # DailyTracker
 
-DailyTracker is a simple and affective app for improoving team productivity
+DailyTracker is a simple and effective app for improoving team productivity
 
-#Requirements
+##Requirements
 
 DailyTracker requires the following:
 - Ruby version 2.7.1
 - RoR version 6.0.3.4
 - PostgreSQL 9.2 and later
 
-#Install
+##Install
 
 ```ruby
 git clone
 bundle install
 yarn install
-add in the .env file a line like this: 
+create .env file in the project root directory: 
 
-export DATABASE_URL="postgresql://<user>:<password>@localhost/?pool=5&encoding=unicode&timeout=5000"
+Put this string in the .env-file: 
 
-rails db:create
+export DATABASE_URL="postgresql://<user>:<password>@localhost/?pool=5&encoding=unicode&timeout=5000" . 
+
+Then replace <user> and <password>
+
 ```
 
-#System dependencies
+##System dependencies
 
-#Configuration
+##Configuration
 
-#Database creation
+##Database creation
 
-#Database initialization
+`rails db:create`
 
-#How to run the test suite
+`rails db:migrate `
 
-#Services (job queues, cache servers, search engines, etc.)
+##Database initialization
+
+`rails db:seed`
+
+##How to run the test suite
+
+`rails spec`
+
+##Services (job queues, cache servers, search engines, etc.)
