@@ -10,15 +10,19 @@
 #  confirmed_at           :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  first_name             :string           default(""), not null
+#  last_name              :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  role                   :integer          not null
+#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 # Indexes
 #
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_role                  (role)
@@ -26,6 +30,8 @@
 class User < ApplicationRecord
   enum role: { admin: 0, manager: 1, master: 2, employee: 3 }
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :role, presence: true
 
   # Include default devise modules. Others available are:
