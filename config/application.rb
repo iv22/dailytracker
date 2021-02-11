@@ -33,7 +33,13 @@ module Dailytracker
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      # Don't generate assets for Sprockets
+      g.assets = nil
+    
+      # Don't generate tests and helpers
+      g.test_framework = nil
+      g.helper = nil
+    end
   end
 end
