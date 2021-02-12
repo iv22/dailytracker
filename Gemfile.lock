@@ -332,6 +332,9 @@ GEM
     sexp_processor (4.15.2)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     simplecov (0.20.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -418,6 +421,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.2)
   rubycritic (~> 4.6)
   shoulda-matchers (~> 4.5, >= 4.5.1)
+  simple_form (~> 5.1.0)
   slim-rails (~> 3.2.0)
   spring
   spring-watcher-listen (~> 2.0.0)

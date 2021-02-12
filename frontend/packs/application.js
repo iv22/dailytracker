@@ -14,4 +14,6 @@
 // const imagePath = (name) => images(name, true)
 
 require("components/hello_react");
+require('bootstrap');
 import "init";
+import 'bootstrap/dist/css/bootstrap';

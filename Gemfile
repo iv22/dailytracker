@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # Authentication
 gem 'devise', '~> 4.7.3'
+# flexible components to create your forms
+gem 'simple_form', '~> 5.1.0'
 # simple template
 gem 'slim-rails', '~> 3.2.0'
 
