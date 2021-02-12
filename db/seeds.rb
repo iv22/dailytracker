@@ -4,9 +4,12 @@
 # The data can then be loaded with the rails db:seed command
 # (or created alongside the database with db:setup).
 
-User.create_with(password: 'ok7777').find_or_create_by(email: 'ok@mail.ru') do |user|
+user = User.create_with(password: 'ok7777').find_or_create_by(email: 'ok@mail.ru') do |user|
   user.first_name = 'Mike'
   user.last_name = 'Dow'
   user.role = User.roles[:admin]
+  user.confirmed_at = DateTime.now
 end
+
+user.update_attribute(:confirmed_at, DateTime.now) if user.confirmed_at.nil?
 
