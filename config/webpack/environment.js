@@ -1,4 +1,5 @@
 const { environment } = require('@rails/webpacker');
+const jquery = require('./plugins/jquery');
 
 ["css", "moduleCss"].forEach(loaderName => {
   const loader = environment.loaders.get(loaderName);
@@ -8,4 +9,5 @@ const { environment } = require('@rails/webpacker');
   environment.loaders.insert(loaderName, loader);
 });
 
+environment.plugins.prepend('jquery', jquery);
 module.exports = environment;
