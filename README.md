@@ -6,7 +6,7 @@ DailyTracker is a simple and effective app for improoving team productivity
 
 DailyTracker requires the following:
 - Ruby version 2.7.1
-- RoR version 6.0.3.4
+- Rails version 6.0.3.4
 - PostgreSQL 9.2 and later
 
 ##Install
@@ -44,3 +44,4 @@ Then replace <user> and <password>
 `rails spec`
 
 ##Services (job queues, cache servers, search engines, etc.)
+
