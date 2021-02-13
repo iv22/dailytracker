@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Dailytracker"
+  config.site_title = 'Dailytracker'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -157,7 +159,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = %i[encrypted_password password password_confirmation]
 
   # == Localize Date/Time Format
   #
@@ -293,7 +295,8 @@ ActiveAdmin.setup do |config|
   #
   # config.include_default_association_filters = true
 
-  # config.maximum_association_filter_arity = 256 # default value of :unlimited will change to 256 in a future version
+  # config.maximum_association_filter_arity = 256 # default value of :unlimited will
+  # change to 256 in a future version
   # config.filter_columns_for_large_association = [
   #    :display_name,
   #    :full_name,
