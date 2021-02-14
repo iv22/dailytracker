@@ -28,6 +28,8 @@
 #  index_users_on_role                  (role)
 #
 class User < ApplicationRecord
+  has_one :employee, dependent: :destroy
+
   enum role: { admin: 0, manager: 1, employee: 2 }
 
   validates :first_name, presence: true
