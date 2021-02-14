@@ -123,7 +123,8 @@ ActiveAdmin.setup do |config|
 
   # == Admin Comments
   #
-  # This allows your users to comment on any resource registered with Active Admin.
+  # This allows your users to comment on any resource
+  # registered with Active Admin.
   #
   # You can completely disable comments:
   # config.comments = false
@@ -198,7 +199,8 @@ ActiveAdmin.setup do |config|
 
   # == Create Another Checkbox
   #
-  # Create another checkbox is disabled by default. You can customize it for individual
+  # Create another checkbox is disabled by default.
+  # You can customize it for individual
   # resources or you can enable them globally from here.
   #
   # config.create_another = true
@@ -212,7 +214,8 @@ ActiveAdmin.setup do |config|
   # To load a stylesheet:
   #   config.register_stylesheet 'my_stylesheet.css'
   #
-  # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
+  # You can provide an options hash for more control,
+  # which is passed along to stylesheet_link_tag():
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
@@ -228,13 +231,16 @@ ActiveAdmin.setup do |config|
 
   # == Menu System
   #
-  # You can add a navigation menu to be used in your application, or configure a provided menu
+  # You can add a navigation menu to be used in your application,
+  # or configure a provided menu
   #
-  # To change the default utility navigation to show a link to your website & a logout btn
+  # To change the default utility navigation to show a link to your
+  # website & a logout btn
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com",
+  #       html_options: { target: :blank }
   #       admin.add_logout_button_to_menu menu
   #     end
   #   end
@@ -243,7 +249,8 @@ ActiveAdmin.setup do |config|
   #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :default do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com",
+  #       html_options: { target: :blank }
   #     end
   #   end
 
@@ -295,8 +302,8 @@ ActiveAdmin.setup do |config|
   #
   # config.include_default_association_filters = true
 
-  # config.maximum_association_filter_arity = 256 # default value of :unlimited will
-  # change to 256 in a future version
+  # config.maximum_association_filter_arity = 256 # default
+  # value of :unlimited will change to 256 in a future version
   # config.filter_columns_for_large_association = [
   #    :display_name,
   #    :full_name,
