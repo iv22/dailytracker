@@ -30,6 +30,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  # Associations
+  it { is_expected.to have_one :employee }
+
   # Columns
   it { is_expected.to have_db_column(:email).of_type(:string) }
   it { is_expected.to have_db_column(:first_name).of_type(:string) }
@@ -45,4 +48,20 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of :last_name }
   it { is_expected.to validate_presence_of :password }
   it { is_expected.to validate_presence_of :role }
+
+  context '#company? for unbounded User' do
+    before { @user = FactoryBot.create(:admin_user) }
+
+    it '#company? returned false' do
+      expect(@user.company?).to be_falsy
+    end
+  end
+
+  context '#company? for bounded User' do
+    before { @user = FactoryBot.create(:employee).user }
+
+    it '#company? returned true' do
+      expect(@user.company?).to be_truthy
+    end
+  end
 end

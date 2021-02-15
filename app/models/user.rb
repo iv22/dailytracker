@@ -41,7 +41,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
 
-  def has_company?
+  def company?
     !employee.nil?
   end
 end

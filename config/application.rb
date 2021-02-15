@@ -36,7 +36,7 @@ module Dailytracker
     config.generators do |g|
       # Don't generate assets for Sprockets
       g.assets = nil
-    
+
       # Don't generate tests and helpers
       g.test_framework = nil
       g.helper = nil

@@ -33,7 +33,7 @@ FactoryBot.define do
     password { Faker::Internet.password }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    employee
+    confirmed_at { DateTime.now }
 
     trait :admin do
       role { 0 }
@@ -43,12 +43,12 @@ FactoryBot.define do
       role { 1 }
     end
 
-    trait :master do
+    trait :employee do
       role { 2 }
     end
 
-    trait :employee do
-      role { 3 }
-    end
+    factory :admin_user, traits: [:admin]
+    factory :manager_user, traits: [:manager]
+    factory :employee_user, traits: [:employee]
   end
 end
