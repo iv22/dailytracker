@@ -1,4 +1,3 @@
-
 # DailyTracker
 
 DailyTracker is a simple and effective app for improoving team productivity
