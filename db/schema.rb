@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 2021_02_14_072124) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "employees", force: :cascade do |t|
+  create_table "company_users", force: :cascade do |t|
     t.integer "company_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_company_users_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,6 +50,6 @@ ActiveRecord::Schema.define(version: 2021_02_14_072124) do
     t.index ["role"], name: "index_users_on_role"
   end
 
-  add_foreign_key "employees", "companies"
-  add_foreign_key "employees", "users"
+  add_foreign_key "company_users", "companies"
+  add_foreign_key "company_users", "users"
 end

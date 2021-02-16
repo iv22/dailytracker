@@ -1,8 +1,9 @@
 .container
-  .row     
-    - if user_signed_in?        
-      = button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-link col-sm"
+  .row
+    - if user_signed_in?
+      = button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-link col-sm"
       = button_to 'Edit profile', edit_user_registration_path, method: :get, class: "btn btn-link col-sm"
+    - elsif controller_name != 'sessions'
+      = button_to 'Log in', new_user_session_path, class: "btn btn-link col-sm"
     - else
-      = button_to 'Login', new_user_session_path, class: "btn btn-link col-sm"
-
+      = button_to 'Sign up', new_user_registration_path, method: :get, class: "btn btn-link col-sm"

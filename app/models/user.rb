@@ -28,7 +28,7 @@
 #  index_users_on_role                  (role)
 #
 class User < ApplicationRecord
-  has_one :employee, dependent: :destroy
+  has_one :company_user, dependent: :destroy
 
   enum role: { admin: 0, manager: 1, employee: 2 }
 
@@ -42,6 +42,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def company?
-    !employee.nil?
+    !company_user.nil?
   end
 end
