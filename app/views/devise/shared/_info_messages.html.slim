@@ -1,0 +1,7 @@
+- flash.each do |type, msg|
+  - if type == 'notice'
+    .alert.alert-success
+      = msg
+  - elsif type == 'set_company_error'
+    .alert.alert-danger
+      = msg      

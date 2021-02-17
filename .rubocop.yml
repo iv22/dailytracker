@@ -2,3 +2,8 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'db/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+
+Layout/LineLength:
+  Max: 120
