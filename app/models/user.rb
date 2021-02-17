@@ -40,8 +40,4 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
-
-  def company?
-    !company_user.nil?
-  end
 end
