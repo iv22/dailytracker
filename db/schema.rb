@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_072124) do
+ActiveRecord::Schema.define(version: 2021_02_18_092442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,6 @@ ActiveRecord::Schema.define(version: 2021_02_14_072124) do
     t.index ["role"], name: "index_users_on_role"
   end
 
-  add_foreign_key "company_users", "companies"
-  add_foreign_key "company_users", "users"
+  add_foreign_key "company_users", "companies", on_delete: :cascade
+  add_foreign_key "company_users", "users", on_delete: :cascade
 end

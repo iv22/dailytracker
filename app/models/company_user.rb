@@ -16,8 +16,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (company_id => companies.id)
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (company_id => companies.id) ON DELETE => cascade
+#  fk_rails_...  (user_id => users.id) ON DELETE => cascade
 #
 class CompanyUser < ApplicationRecord
   belongs_to :user
