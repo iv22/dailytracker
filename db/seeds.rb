@@ -13,4 +13,4 @@ end
 
 user.update_attribute(:confirmed_at, Time.now) if user.confirmed_at.nil?
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
