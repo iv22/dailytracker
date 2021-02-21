@@ -29,7 +29,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'activeadmin'
 # Authentication
 gem 'devise', '~> 4.7.3'
-gem 'devise_invitable', '~> 2.0.0'
+gem 'devise_invitable', '~> 2.0.3'
 # OOP Delegator
 gem 'draper', '~> 4.0.1'
 # flexible components to create your forms

@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name role])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name role])
   end
+
+  def manager?
+    current_user.role == 'manager'
+  end
 end
