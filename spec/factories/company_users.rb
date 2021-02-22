@@ -23,5 +23,9 @@ FactoryBot.define do
   factory :company_user do
     association :company, factory: :company
     association :user, factory: :employee_user
+
+    trait :manager do
+      association :user, factory: :manager_user
+    end
   end
 end

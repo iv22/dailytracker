@@ -13,7 +13,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def mastered_by?(current)
-    # implementation will be here
+    # TODO implementation will be here
     false
   end
 end
