@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     root 'home#index', as: :authenticated_root
   end
 
-  root 'home#index'
+  root 'home#index'  
+
+  ActiveAdmin.routes(self)
 end

@@ -12,4 +12,3 @@ user = User.create_with(password: 'ok7777').find_or_create_by(email: 'ok@mail.ru
 end
 
 user.update_attribute(:confirmed_at, Time.now) if user.confirmed_at.nil?
-
