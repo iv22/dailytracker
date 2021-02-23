@@ -1,1 +1,3 @@
-json.partial! "api/v1/employees/employee", member: @member
+# frozen_string_literal: true
+
+json.partial! 'api/v1/employees/employee', member: @member

@@ -4,6 +4,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'node_modules/**/*'
+    - 'spec/**/*'
 
 Layout/LineLength:
   Max: 120

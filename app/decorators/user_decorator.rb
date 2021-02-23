@@ -12,8 +12,8 @@ class UserDecorator < Draper::Decorator
     current.role == 'manager' && current.company_user.company == company
   end
 
-  def mastered_by?(current)
-    # TODO implementation will be here
+  def mastered_by?(_current)
+    # TODO: implementation will be here
     false
   end
 end
