@@ -13,6 +13,7 @@ module Api
       def index
         if manager?
           @members = @company.members
+          render json: @members, each_serializer: UserSerializer
         else
           handle_unauthorized
         end
@@ -20,7 +21,7 @@ module Api
 
       def show
         if @member.managed_by?(current_user)
-          respond_to { |format| format.json { render :show } }
+          render_member
         else
           handle_unauthorized
         end
@@ -29,7 +30,7 @@ module Api
       def current
         @member = current_user
         @member = @member.decorate
-        respond_to { |format| format.json { render :show } }
+        render_member
       end
 
       def create
@@ -51,7 +52,7 @@ module Api
       def destroy
         if @member.managed_by?(current_user)
           @member.destroy
-          respond_to { |format| format.json { head :no_content } }
+          render json: {}, status: :no_content
         else
           handle_unauthorized
         end
@@ -79,11 +80,8 @@ module Api
       end
 
       def handle_unauthorized
-        respond_to { |format| format.json { render :unauthorized, status: 401 } }
-      end
-
-      def handle_no_content
-        respond_to { |format| format.json { head :no_content } }
+        error_message = 'You are not authorized to perform this action.'
+        render json: { error: error_message }, status: :unauthorized
       end
 
       def record_not_found(error)
@@ -98,6 +96,10 @@ module Api
         current_user.role == 'manager'
       end
 
+      def render_member
+        render json: @member, serializer: UserSerializer
+      end
+
       def create_user_by_invitation
         ActiveRecord::Base.transaction do
           @member = User.invite!(member_params)
@@ -108,22 +110,16 @@ module Api
       def create_employee
         create_user_by_invitation
       rescue ActiveRecord::RecordInvalid => e
-        respond_to do |format|
-          format.json { render json: e.errors, status: :unprocessable_entity }
-        end
-      else
-        respond_to do |format|
-          format.json { render :show, status: :created, location: api_v1_employee_path(@member) }
-        end
+        render json: e.errors, status: :unprocessable_entity
+      else        
+        render json: @member, status: :created, location: api_v1_employee_path(@member)
       end
 
-      def update_response
-        respond_to do |format|
-          if @member.update(member_params)
-            format.json { render :show, status: :ok, location: api_v1_employee_path(@member) }
-          else
-            format.json { render json: @member.errors, status: :unprocessable_entity }
-          end
+      def update_response        
+        if @member.update(member_params)
+          render json: @member, status: :ok, location: api_v1_employee_path(@member)
+        else
+          render json: @member.errors, status: :unprocessable_entity
         end
       end
     end
