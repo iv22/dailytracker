@@ -9,63 +9,48 @@ module Api
       before_action :set_member, only: %i[show update destroy]
       before_action :validate_role, only: %i[create update]
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+      rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+      rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
 
       def index
-        if manager?
-          @members = @company.members
-          render json: @members, each_serializer: UserSerializer
-        else
-          handle_unauthorized
-        end
+        authorize! Object, with: UserPolicy
+        @members = @company.members
+        render json: @members, each_serializer: UserSerializer
       end
 
       def show
-        if @member.managed_by?(current_user)
-          render_member
-        else
-          handle_unauthorized
-        end
-      end
-
-      def current
-        @member = current_user
-        @member = @member.decorate
-        render_member
+        authorize! @member, with: UserPolicy
+        render json: @member, serializer: UserSerializer
       end
 
       def create
-        if manager?
-          create_employee
-        else
-          handle_unauthorized
-        end
+        authorize! Object, with: UserPolicy
+        @member = UserInviter.call(member_params, @company)
+        render json: @member, status: :created, location: api_v1_employee_path(@member)
       end
 
       def update
-        if @member.managed_by?(current_user)
-          update_response
+        authorize! @member, with: UserPolicy
+        if @member.update(member_params)
+          render json: @member, status: :ok, location: api_v1_employee_path(@member)
         else
-          handle_unauthorized
+          render json: @member.errors, status: :unprocessable_entity
         end
       end
 
       def destroy
-        if @member.managed_by?(current_user)
-          @member.destroy
-          render json: {}, status: :no_content
-        else
-          handle_unauthorized
-        end
+        authorize! @member, with: UserPolicy
+        @member.destroy
+        render json: {}, status: :no_content
       end
 
       # lock employee
-      # get_by_role
       # upload_employees
 
       private
 
       def set_company
-        @company = current_user.company_user.company.decorate
+        @company = current_user.company_user&.company&.decorate
       end
 
       def set_member
@@ -88,39 +73,12 @@ module Api
         render json: { error: error.message }, status: :not_found
       end
 
+      def record_invalid(error)
+        render json: { error: error.message }, status: :unprocessable_entity
+      end
+
       def member_params
         params.require(:member).permit(:email, :first_name, :last_name, :role)
-      end
-
-      def manager?
-        current_user.role == 'manager'
-      end
-
-      def render_member
-        render json: @member, serializer: UserSerializer
-      end
-
-      def create_user_by_invitation
-        ActiveRecord::Base.transaction do
-          @member = User.invite!(member_params)
-          @company.company_users.create!(user: @member)
-        end
-      end
-
-      def create_employee
-        create_user_by_invitation
-      rescue ActiveRecord::RecordInvalid => e
-        render json: e.errors, status: :unprocessable_entity
-      else        
-        render json: @member, status: :created, location: api_v1_employee_path(@member)
-      end
-
-      def update_response        
-        if @member.update(member_params)
-          render json: @member, status: :ok, location: api_v1_employee_path(@member)
-        else
-          render json: @member.errors, status: :unprocessable_entity
-        end
       end
     end
   end

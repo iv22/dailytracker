@@ -13,39 +13,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
   let!(:managed_employee) { FactoryBot.create(:company_user, company: manager_company).user }
   let!(:employee) { FactoryBot.create(:company_user).user }
 
-  # Current
-  describe 'GET #current' do
-    context 'when User is not logged in' do
-      before { get :current, format: :json }
-
-      it 'should return unauthorized status' do
-        expect(response).to have_http_status(:unauthorized)
-      end
-    end
-
-    context 'when User logged in as Manager' do
-      before do
-        sign_in(manager, scope: :user)
-        get :current, format: :json
-      end
-
-      it 'can see itself' do
-        expect(json['email']).to eq(manager.email)
-      end
-    end
-
-    context 'when User logged in as Employee' do
-      before do
-        sign_in(employee, scope: :user)
-        get :current, format: :json
-      end
-
-      it 'can see itself' do
-        expect(json['email']).to eq(employee.email)
-      end
-    end
-  end
-
   # Index
   describe 'GET #index' do
     context 'when User is not logged in' do

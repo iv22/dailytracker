@@ -15,6 +15,6 @@ Hello.propTypes = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('todo-app');
-  app && ReactDOM.render(<Hello name={current_user.first_name} />, app);
+  const app = document.getElementById('app');
+  app && ReactDOM.render(<Hello name="React App" />, app);
 })
