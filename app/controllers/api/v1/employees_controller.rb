@@ -7,10 +7,10 @@ module Api
       before_action :authenticate_user!
       before_action :set_company
       before_action :set_member, only: %i[show update destroy]
-      before_action :validate_role, only: %i[create update]
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
       rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
       rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
+      rescue_from ArgumentError, with: :params_invalid
 
       def index
         authorize! Object, with: UserPolicy
@@ -25,7 +25,8 @@ module Api
 
       def create
         authorize! Object, with: UserPolicy
-        @member = UserInviter.call(member_params, @company)
+        MemberInviter.call(member_params, @company)
+        @member = User.find_by(email: member_params[:email])
         render json: @member, status: :created, location: api_v1_employee_path(@member)
       end
 
@@ -41,7 +42,7 @@ module Api
       def destroy
         authorize! @member, with: UserPolicy
         @member.destroy
-        render json: {}, status: :no_content
+        respond_to { |format| format.json { head :no_content } }
       end
 
       # lock employee
@@ -57,28 +58,12 @@ module Api
         @member = User.find(params[:id]).decorate
       end
 
-      def validate_role
-        role = params.require(:member)[:role]
-        return if %w[manager employee].include? role
-
-        render json: { error: "Invalid Role: #{role}" }, status: :unprocessable_entity
-      end
-
-      def handle_unauthorized
-        error_message = 'You are not authorized to perform this action.'
-        render json: { error: error_message }, status: :unauthorized
-      end
-
-      def record_not_found(error)
-        render json: { error: error.message }, status: :not_found
-      end
-
-      def record_invalid(error)
+      def params_invalid(error)
         render json: { error: error.message }, status: :unprocessable_entity
       end
 
       def member_params
-        params.require(:member).permit(:email, :first_name, :last_name, :role)
+        @member_params ||= MemberParams.call(params)
       end
     end
   end

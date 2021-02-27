@@ -20,4 +20,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name role])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name role])
   end
+
+  def handle_unauthorized(error)
+    render json: { error: error.message }, status: :unauthorized
+  end
+
+  def record_not_found(error)
+    render json: { error: error.message }, status: :not_found
+  end
+
+  def record_invalid(error)
+    render json: { error: error.message }, status: :unprocessable_entity
+  end
 end
