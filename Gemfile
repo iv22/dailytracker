@@ -69,7 +69,7 @@ group :development do
   # a code metric tool for rails codes, written in Ruby
   gem 'rails_best_practices', '~> 1.20'
   # RuboCop is a Ruby code style checking and code formatting tool
-  gem 'rubocop', '~> 1.9', '>= 1.9.1', require: false
+  gem 'rubocop', '= 1.5.2', require: false
   # A collection of RuboCop cops to check for downstream compatability issues
   gem 'rubocop-packaging', '~> 0.5.1'
   # A collection of RuboCop cops to check for performance optimizations

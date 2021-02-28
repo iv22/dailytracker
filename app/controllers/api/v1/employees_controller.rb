@@ -13,25 +13,25 @@ module Api
       rescue_from ArgumentError, with: :params_invalid
 
       def index
-        authorize! Object, with: UserPolicy
+        authorize! Object, with: Employees::UserPolicy
         @members = @company.members
         render json: @members, each_serializer: UserSerializer
       end
 
       def show
-        authorize! @member, with: UserPolicy
+        authorize! @member, with: Employees::UserPolicy
         render json: @member, serializer: UserSerializer
       end
 
       def create
-        authorize! Object, with: UserPolicy
-        MemberInviter.call(member_params, @company)
+        authorize! Object, with: Employees::UserPolicy
+        Build::MemberInviter.call(member_params, @company)
         @member = User.find_by(email: member_params[:email])
         render json: @member, status: :created, location: api_v1_employee_path(@member)
       end
 
       def update
-        authorize! @member, with: UserPolicy
+        authorize! @member, with: Employees::UserPolicy
         if @member.update(member_params)
           render json: @member, status: :ok, location: api_v1_employee_path(@member)
         else
@@ -40,7 +40,7 @@ module Api
       end
 
       def destroy
-        authorize! @member, with: UserPolicy
+        authorize! @member, with: Employees::UserPolicy
         @member.destroy
         respond_to { |format| format.json { head :no_content } }
       end
@@ -63,7 +63,7 @@ module Api
       end
 
       def member_params
-        @member_params ||= MemberParams.call(params)
+        @member_params ||= Build::MemberParams.call(params)
       end
     end
   end
