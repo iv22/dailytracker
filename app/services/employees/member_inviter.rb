@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Build
+module Employees
   class MemberInviter < ApplicationService
     def initialize(params, company)
       super()

@@ -25,7 +25,7 @@ module Api
 
       def create
         authorize! Object, with: Employees::UserPolicy
-        Build::MemberInviter.call(member_params, @company)
+        Employees::MemberInviter.call(member_params, @company)
         @member = User.find_by(email: member_params[:email])
         render json: @member, status: :created, location: api_v1_employee_path(@member)
       end
@@ -63,7 +63,7 @@ module Api
       end
 
       def member_params
-        @member_params ||= Build::MemberParams.call(params)
+        @member_params ||= Employees::MemberParams.call(params)
       end
     end
   end

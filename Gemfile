@@ -45,6 +45,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7'
   # Call 'byebug' anywhere in the code to stop execution
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'json_spec', '~> 1.1.5'
   # Use Pry as your rails console
   gem 'pry-rails'
   # rspec-rails is a testing framework for Rails 5+
