@@ -30,7 +30,10 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
       end
 
       it 'should see all coworkers' do
-        expect(json.collect { |emp| emp['email'] }).to contain_exactly(manager.email, managed_employee.email)
+        expect(json.collect { |emp| emp['email'] }).to contain_exactly(
+          manager.email,
+          managed_employee.email
+        )
       end
     end
 
@@ -61,7 +64,12 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
 
       it 'can see any coworker' do
         get :show, format: :json, params: { id: managed_employee.id }
-        expect(json['email']).to eq(managed_employee.email)
+        expect(assigns(@member)['member'].user).to eq(managed_employee)
+      end
+
+      it 'should use UserSerializer' do
+        get :show, format: :json, params: { id: managed_employee.id }
+        assert_serializer 'UserSerializer'
       end
 
       it 'can not see Employees of other Companies' do
@@ -100,25 +108,21 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
 
     context 'when User logged in as Manager' do
-      before { sign_in(manager, scope: :user) }
-
-      it 'should create Employee' do
+      before do
+        sign_in(manager, scope: :user)
         post :create, format: :json, params: @params
+      end
+      
+      it 'should create Employee' do        
         expect(json['email']).to eq(@params['member']['email'])
       end
 
       it 'should have the same Company' do
-        post :create, format: :json, params: @params
         new_company = User.find(json['id']).company_user.company
         expect(new_company).to eq(manager_company)
       end
-
-      it "should reject invalid Employee's role" do
-        post :create, format: :json, params: { 'member' => { 'role' => 'admin' } }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
     end
-
+    
     context 'when User logged in as Employee' do
       before { sign_in(employee, scope: :user) }
 
@@ -155,11 +159,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
       it 'should update Employee' do
         put :update, format: :json, params: @params
         expect(response).to have_http_status(:ok)
-      end
-
-      it "should reject invalid Employee's role" do
-        put :update, format: :json, params: { id: managed_employee.id, 'member' => { 'role' => 'admin' } }
-        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
