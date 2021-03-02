@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'controllers_helper'
 
 RSpec.describe Api::V1::EmployeesController, type: :controller do
-  render_views
-
-  let(:json) { JSON.parse(response.body) }
-
   let!(:employee) { FactoryBot.create(:company_user).user }
 
-  # Index
   describe 'GET #index' do
     context 'when User is not logged in' do
       before { get :index, format: :json }
@@ -31,7 +26,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
   end
 
-  # Show
   describe 'GET #show' do
     context 'when User is not logged in' do
       before { get :show, format: :json, params: { id: employee.id } }
@@ -51,7 +45,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
   end
 
-  # Create
   describe 'POST #create' do
     context 'when User is not logged in' do
       before { post :create, format: :json }
@@ -60,7 +53,7 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
         expect(response).to have_http_status(:unauthorized)
       end
     end
-    
+
     context 'when User logged in as Employee' do
       before { sign_in(employee, scope: :user) }
 
@@ -71,7 +64,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
   end
 
-  # Update
   describe 'PUT #update' do
     before do
       @params = { id: employee.id }
@@ -95,7 +87,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
   end
 
-  # Destroy
   describe 'DELETE #destroy' do
     context 'when User is not logged in' do
       before { delete :destroy, format: :json, params: { id: employee.id } }
