@@ -19,4 +19,6 @@ Rails.application.routes.draw do
       resources :employees, except: [:new, :edit]      
     end
   end
+
+  match '*path', to: 'home#index', via: :all
 end

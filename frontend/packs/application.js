@@ -12,8 +12,15 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-require("components/hello_react");
-require('bootstrap');
+require("components/App");
+require("bootstrap");
 import "init";
-import 'bootstrap/dist/css/bootstrap';
+import "bootstrap/dist/css/bootstrap";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from 'components/App';
+
+document.addEventListener("DOMContentLoaded", () => {
+    const app = document.getElementById("todo-app");
+    app && ReactDOM.render(< App />, app);
+});
