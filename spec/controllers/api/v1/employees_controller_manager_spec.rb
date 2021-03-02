@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'controllers_helper'
+require 'rails_helper'
 
 # User Log-in as a Manager
 RSpec.describe Api::V1::EmployeesController, type: :controller do

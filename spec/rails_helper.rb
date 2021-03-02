@@ -2,6 +2,7 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'controllers_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
@@ -74,6 +75,9 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include ActiveModelSerializers::Test::Serializer
+
+  # Render views by default
+  config.render_views
 end
 
 Shoulda::Matchers.configure do |config|

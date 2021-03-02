@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'controllers_helper'
+require 'rails_helper'
 
 RSpec.describe Api::V1::EmployeesController, type: :controller do
   let!(:employee) { FactoryBot.create(:company_user).user }

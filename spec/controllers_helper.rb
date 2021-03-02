@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.shared_context 'shared controller data', shared_context: :metadata do
   let(:json_body) { response.body }
 
@@ -18,5 +16,4 @@ end
 
 RSpec.configure do |rspec|
   rspec.include_context 'shared controller data', include_shared: true
-  rspec.render_views
 end
