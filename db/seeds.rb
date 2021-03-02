@@ -12,3 +12,22 @@ user = User.create_with(password: 'ok7777').find_or_create_by(email: 'ok@mail.ru
 end
 
 user.update_attribute(:confirmed_at, Time.now) if user.confirmed_at.nil?
+
+company = Company.create!(name: 'Test Company')
+
+teams = Team.create!([
+  { name: "Diamond", company: company },
+  { name: "Ruby", company: company },
+  { name: "Cristal", company: company },
+  { name: "Green", company: company },
+  { name: "Opal", company: company }
+])
+
+team_user = TeamUser.create!([
+  {name: 'David', role: 0, team: teams[0]},
+  {name: 'Mark', role: 1, team: teams[0]},
+  {name: 'Den', role: 0, team: teams[0]},
+  {name: 'Marat', role: 0, team: teams[1]},
+  {name: 'Tomas', role: 0, team: teams[1]},
+  {name: 'Gleb', role: 1, team: teams[1]},
+])

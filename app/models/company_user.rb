@@ -25,4 +25,5 @@ class CompanyUser < ApplicationRecord
 
   validates :company, presence: true
   validates :user, presence: true
+  belongs_to :team
 end
