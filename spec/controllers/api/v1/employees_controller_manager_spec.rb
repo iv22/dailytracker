@@ -4,7 +4,7 @@ require 'rails_helper'
 
 # User Log-in as a Manager
 RSpec.describe Api::V1::EmployeesController, type: :controller do
-  include_context 'shared controller data'
+  let(:json_body) { response.body }
 
   let!(:manager_company_user) { FactoryBot.create(:company_user, :manager) }
   let!(:manager_company) { manager_company_user.company }

@@ -2,19 +2,15 @@
 
 module Employees
   class MemberInviter < ApplicationService
-    attr_reader :member_params, :company
+    attr_reader :user
 
-    def initialize(params, company)
+    def initialize(user)
       super()
-      @member_params = params
-      @company = company
+      @user = user
     end
 
     def call
-      ActiveRecord::Base.transaction do
-        member = User.invite!(member_params)
-        company.company_users.create!(user: member)
-      end
+      user.invite!
     end
   end
 end
