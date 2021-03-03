@@ -2,15 +2,15 @@
 
 module Employees
   class MemberInviter < ApplicationService
-    attr_reader :user
+    attr_reader :params
 
-    def initialize(user)
+    def initialize(params)
       super()
-      @user = user
+      @params = params
     end
 
     def call
-      user.invite!
+      User.invite!(params)
     end
   end
 end

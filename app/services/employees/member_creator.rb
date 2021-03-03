@@ -13,10 +13,9 @@ module Employees
     def call
       member = nil
       ActiveRecord::Base.transaction do
-        member = User.create(member_params)
+        member = Employees::MemberInviter.call(member_params)
         company.company_users.create!(user: member)
       end
-      Employees::MemberInviter.call(member)
       member
     end
   end
