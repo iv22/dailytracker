@@ -42,9 +42,6 @@ module Api
         respond_to { |format| format.json { head :no_content } }
       end
 
-      # lock employee
-      # upload_employees
-
       private
 
       def company

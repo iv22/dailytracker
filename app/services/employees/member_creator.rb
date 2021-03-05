@@ -11,11 +11,10 @@ module Employees
     end
 
     def call
-      ActiveRecord::Base.transaction do
-        member = Employees::MemberInviter.call(member_params)
-        company.company_users.create!(user: member)
-        member
-      end
+      user = User.new(member_params)
+      user.password = Devise.friendly_token.first(8)
+      company.company_users.create!(user: user)
+      user
     end
   end
 end
