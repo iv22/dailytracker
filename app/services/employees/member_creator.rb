@@ -11,12 +11,11 @@ module Employees
     end
 
     def call
-      member = nil
       ActiveRecord::Base.transaction do
         member = Employees::MemberInviter.call(member_params)
         company.company_users.create!(user: member)
+        member
       end
-      member
     end
   end
 end

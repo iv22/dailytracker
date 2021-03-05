@@ -7,8 +7,8 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  company_id :integer
-#  user_id    :integer
+#  company_id :integer          not null
+#  user_id    :integer          not null
 #
 # Indexes
 #

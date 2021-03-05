@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: company_users
@@ -19,10 +17,18 @@
 #  fk_rails_...  (company_id => companies.id) ON DELETE => cascade
 #  fk_rails_...  (user_id => users.id) ON DELETE => cascade
 #
-class CompanyUser < ApplicationRecord
-  belongs_to :user
-  belongs_to :company
+require 'rails_helper'
 
-  validates :company, presence: true
-  validates :user, presence: true
+RSpec.describe CompanyUser, type: :model do
+  # Associations
+  it { is_expected.to belong_to :company }
+  it { is_expected.to belong_to :user }
+
+  # Columns
+  it { is_expected.to have_db_column(:company_id).of_type(:integer) }
+  it { is_expected.to have_db_column(:user_id).of_type(:integer) }
+
+  # Validations
+  it { is_expected.to validate_presence_of :company }
+  it { is_expected.to validate_presence_of :user }
 end
