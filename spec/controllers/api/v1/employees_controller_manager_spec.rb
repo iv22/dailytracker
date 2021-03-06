@@ -18,17 +18,15 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     before { get :index, format: :json }
 
     it 'should see all coworkers' do
-      expect(json_body).to be_json_eql([
-        user_fields(manager),
-        user_fields(managed_employee)
-      ].to_json)
+      expect(json_body).to be_json_eql("[#{user_fields(manager)},
+        #{user_fields(managed_employee)}]")
     end
   end
 
   describe 'GET #show' do
     it 'can see any coworker' do
       get :show, format: :json, params: { id: managed_employee.id }
-      expect(json_body).to be_json_eql(user_fields(managed_employee).to_json)
+      expect(json_body).to be_json_eql(user_fields(managed_employee))
     end
 
     it 'should use UserSerializer' do
@@ -56,7 +54,7 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
 
     it 'should create Employee' do
-      expect(json_body).to be_json_eql(user_fields(@user).to_json)
+      expect(json_body).to be_json_eql(user_fields(@user))
     end
 
     it 'should have the same Company' do
