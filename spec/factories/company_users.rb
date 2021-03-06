@@ -7,8 +7,8 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  company_id :integer
-#  user_id    :integer
+#  company_id :integer          not null
+#  user_id    :integer          not null
 #
 # Indexes
 #
@@ -16,12 +16,16 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (company_id => companies.id)
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (company_id => companies.id) ON DELETE => cascade
+#  fk_rails_...  (user_id => users.id) ON DELETE => cascade
 #
 FactoryBot.define do
   factory :company_user do
     association :company, factory: :company
     association :user, factory: :employee_user
+
+    trait :manager do
+      association :user, factory: :manager_user
+    end
   end
 end

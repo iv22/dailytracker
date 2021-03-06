@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+# Authorization framework
+gem 'action_policy', '~> 0.5.5'
+gem 'active_model_serializers', '~> 0.10.12'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
@@ -29,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'activeadmin'
 # Authentication
 gem 'devise', '~> 4.7.3'
+gem 'devise_invitable', '~> 2.0.3'
 # OOP Delegator
 gem 'draper', '~> 4.0.1'
 # flexible components to create your forms
@@ -41,6 +45,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7'
   # Call 'byebug' anywhere in the code to stop execution
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'json_spec', '~> 1.1.5'
   # Use Pry as your rails console
   gem 'pry-rails'
   # rspec-rails is a testing framework for Rails 5+
@@ -65,7 +70,7 @@ group :development do
   # a code metric tool for rails codes, written in Ruby
   gem 'rails_best_practices', '~> 1.20'
   # RuboCop is a Ruby code style checking and code formatting tool
-  gem 'rubocop', '~> 1.9', '>= 1.9.1', require: false
+  gem 'rubocop', '= 1.5.2', require: false
   # A collection of RuboCop cops to check for downstream compatability issues
   gem 'rubocop-packaging', '~> 0.5.1'
   # A collection of RuboCop cops to check for performance optimizations

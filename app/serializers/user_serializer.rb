@@ -38,28 +38,6 @@
 #  index_users_on_reset_password_token               (reset_password_token) UNIQUE
 #  index_users_on_role                               (role)
 #
-FactoryBot.define do
-  factory :user do
-    email { Faker::Internet.unique.email }
-    password { Faker::Internet.password }
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
-    confirmed_at { Time.now }
-
-    trait :admin do
-      role { 0 }
-    end
-
-    trait :manager do
-      role { 1 }
-    end
-
-    trait :employee do
-      role { 2 }
-    end
-
-    factory :admin_user, traits: [:admin]
-    factory :manager_user, traits: [:manager]
-    factory :employee_user, traits: [:employee]
-  end
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :email, :first_name, :last_name, :role
 end

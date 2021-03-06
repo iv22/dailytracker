@@ -13,4 +13,10 @@ Rails.application.routes.draw do
   root 'home#index'  
 
   ActiveAdmin.routes(self)
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do      
+      resources :employees, except: [:new, :edit]      
+    end
+  end
 end

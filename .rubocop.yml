@@ -1,9 +1,14 @@
 AllCops:
+  TargetRubyVersion: 2.7
   NewCops: enable
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
     - 'node_modules/**/*'
+    - 'spec/**/*'
 
 Layout/LineLength:
   Max: 120
+
+Style/Documentation:
+  Enabled: false
