@@ -4,9 +4,9 @@ module Employees
   class MemberParams < ApplicationService
     attr_reader :member_params
 
-    def initialize(params)
+    def initialize(params, user_props)
       super()
-      @member_params = params.require(:member).permit(:email, :first_name, :last_name, :role)
+      @member_params = params.require(:member).permit(*user_props)
     end
 
     def call
