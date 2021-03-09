@@ -19,6 +19,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string           not null
+#  phone                  :string(20)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -45,6 +46,7 @@ FactoryBot.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     confirmed_at { Time.now }
+    phone { '+375294967365' }
 
     trait :admin do
       role { 0 }

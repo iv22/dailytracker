@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Employees::CsvMemberInviter, type: :controller do
   let!(:source) { fixture_file_upload('files/employees.csv', 'text/csv') }
-  let!(:props) { [:email, :first_name, :last_name, :role].freeze }
+  let!(:props) { %i[email first_name last_name role phone].freeze }
   let!(:company) { FactoryBot.create(:company) }
 
   before do

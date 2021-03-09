@@ -35,6 +35,7 @@ gem 'devise', '~> 4.7.3'
 gem 'devise_invitable', '~> 2.0.3'
 # OOP Delegator
 gem 'draper', '~> 4.0.1'
+gem 'phonelib', '~> 0.6.48'
 # flexible components to create your forms
 gem 'simple_form', '~> 5.1.0'
 # simple template

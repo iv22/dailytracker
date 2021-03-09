@@ -19,6 +19,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string           not null
+#  phone                  :string(20)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -52,6 +53,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_db_column(:role).of_type(:integer) }
   it { is_expected.to have_db_column(:created_at).of_type(:datetime) }
   it { is_expected.to have_db_column(:updated_at).of_type(:datetime) }
+  it { is_expected.to have_db_column(:phone).of_type(:string) }
 
   # Validations
   it { is_expected.to validate_presence_of :email }

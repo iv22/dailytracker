@@ -267,6 +267,7 @@ GEM
       ast (~> 2.4.1)
     path_expander (1.1.0)
     pg (1.2.3)
+    phonelib (0.6.48)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -492,6 +493,7 @@ DEPENDENCIES
   json_spec (~> 1.1.5)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
+  phonelib (~> 0.6.48)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
