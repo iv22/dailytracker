@@ -13,13 +13,14 @@ module Employees
     end
 
     def call
-      CSV.foreach(attachment, headers: true, header_converters: :symbol, col_sep: ';') do |row|
+      CSV.foreach(attachment, headers: true, header_converters: :symbol, col_sep: ';') do |row|        
         columns ||= row.headers.intersection(user_props)
         params = {}
         columns.each { |name| params[name.to_s] = row[name] }
         user = invite_employee(params, company)
         @approved_users << user if user
       end
+      approved_users
     end
 
     private
