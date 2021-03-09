@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       post 'invitation/:id', to: 'invitation#create', as: 'invitation'
     
       resources :teams, only: [:index, :show, :create, :update, :destroy]
-      resource :team_user, only: [:index, :show, :create, :update, :destroy]
+      resources :team_users, only: [:index, :show, :create, :update, :destroy]
     end
   end
   match '*path', to: 'home#index', via: :all

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: team_users
@@ -19,8 +17,17 @@
 #
 #  fk_rails_...  (team_id => teams.id)
 #
-class TeamUser < ApplicationRecord
-  belongs_to :team, class_name: 'Team'
+require 'rails_helper'
 
-  validates :name, presence: true
+RSpec.describe TeamUser, type: :model do
+  # Associations
+  it { is_expected.to belong_to :team }
+
+  # Columns
+  it { is_expected.to have_db_column(:team_id).of_type(:integer) }
+  it { is_expected.to have_db_column(:name).of_type(:string) }
+  it { is_expected.to have_db_column(:is_team_lead).of_type(:boolean) }
+
+  # Validations
+  it { is_expected.to validate_presence_of :name }
 end

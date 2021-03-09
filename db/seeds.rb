@@ -15,6 +15,8 @@ user.update_attribute(:confirmed_at, Time.now) if user.confirmed_at.nil?
 
 company = Company.create!(name: 'Test Company')
 
+company.company_users.create(user: user)
+
 teams = Team.create!([
   { name: "Diamond", company: company },
   { name: "Ruby", company: company },
@@ -24,10 +26,10 @@ teams = Team.create!([
 ])
 
 team_user = TeamUser.create!([
-  {name: 'David', role: 0, team: teams[0]},
-  {name: 'Mark', role: 1, team: teams[0]},
-  {name: 'Den', role: 0, team: teams[0]},
-  {name: 'Marat', role: 0, team: teams[1]},
-  {name: 'Tomas', role: 0, team: teams[1]},
-  {name: 'Gleb', role: 1, team: teams[1]},
+  {name: 'David', team: teams[0], is_team_lead: false },
+  {name: 'Mark', team: teams[0], is_team_lead: false },
+  {name: 'Den', team: teams[0], is_team_lead: false },
+  {name: 'Marat', team: teams[1], is_team_lead: false },
+  {name: 'Tomas', team: teams[1], is_team_lead: false },
+  {name: 'Gleb', team: teams[1], is_team_lead: false }
 ])

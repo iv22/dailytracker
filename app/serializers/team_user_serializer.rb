@@ -4,12 +4,12 @@
 #
 # Table name: team_users
 #
-#  id         :bigint           not null, primary key
-#  name       :string
-#  role       :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  team_id    :bigint           not null
+#  id           :bigint           not null, primary key
+#  is_team_lead :boolean          not null
+#  name         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  team_id      :bigint           not null
 #
 # Indexes
 #
@@ -19,7 +19,6 @@
 #
 #  fk_rails_...  (team_id => teams.id)
 #
-# TeamUserSerializer
 class TeamUserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :role
+  attributes :id, :name, :is_team_lead
 end

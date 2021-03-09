@@ -8,7 +8,7 @@ module Api
       before_action :set_team, only: %i[show edit update destroy]
 
       def index
-        @teams = Team.all
+        @teams = user.company.teams
 
         render json: @teams, each_serializer: TeamSerializer
       end
@@ -22,11 +22,11 @@ module Api
       end
 
       def new
-        @team = @company.teams.build
+        @team = user.company.teams.build
       end
 
       def create
-        @team = @company.teams.build(team_params)
+        @team = user.company.teams.build(team_params)
 
         if @team.save
           render json: @team, status: :ok, location: api_v1_team_path(@team)
@@ -47,7 +47,7 @@ module Api
 
       def destroy
         @team.destroy
-        render json: :no_content
+        head :no_content
       end
 
       private
@@ -56,12 +56,16 @@ module Api
         params.require(:team).permit(:name, :company_id)
       end
 
+      def user
+        @user ||= User.find_by(params[:user_id]).decorate
+      end
+
       def company
-        @company ||= Company.find_by(params[:company_id])
+        @company ||= current_user.company_user&.company&.decorate
       end
 
       def set_team
-        @team = company.teams.find(params[:id])
+        @team = user.company.teams.find(params[:id])
       end
     end
   end

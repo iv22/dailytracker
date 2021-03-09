@@ -24,8 +24,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
-gem 'active_model_serializers', '~> 0.10.12'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

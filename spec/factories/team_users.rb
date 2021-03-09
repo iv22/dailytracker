@@ -19,8 +19,8 @@
 #
 #  fk_rails_...  (team_id => teams.id)
 #
-class TeamUser < ApplicationRecord
-  belongs_to :team, class_name: 'Team'
-
-  validates :name, presence: true
-end
+FactoryBot.define do
+    factory :team_user do
+      name { Faker::Name.name }
+    end
+  end

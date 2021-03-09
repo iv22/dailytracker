@@ -56,10 +56,11 @@ ActiveRecord::Schema.define(version: 2021_03_23_105118) do
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
-    
+  end
+
   create_table "team_users", force: :cascade do |t|
     t.string "name"
-    t.integer "role"
+    t.boolean "is_team_lead", null: false
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
