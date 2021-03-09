@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SeparateTeam = props => {
+const SeparateTeam = ({activeTeam}) => {
   return (
     <div>
       <table>
@@ -10,7 +10,7 @@ const SeparateTeam = props => {
           </tr>
         </thead>
         <tbody>
-          {props.activeTeam.team_users.map((team_user) => (
+          {activeTeam.team_users.map((team_user) => (
             <tr key={team_user.id}>
               <td className="team_user-name">
                 {team_user.name}

@@ -18,9 +18,9 @@ import "init";
 import "bootstrap/dist/css/bootstrap";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from 'components/App';
+import App from "components/App";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const app = document.getElementById("todo-app");
+    const app = document.getElementById('app');
     app && ReactDOM.render(< App />, app);
 });
