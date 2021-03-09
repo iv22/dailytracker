@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 # User Log-in as a Manager
-RSpec.describe Api::V1::EmployeesController, type: :controller do  
+RSpec.describe Api::V1::EmployeesController, type: :controller do
   let!(:manager_company_user) { FactoryBot.create(:company_user, :manager) }
   let!(:manager) { manager_company_user.user }
 
@@ -14,23 +14,23 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
       post :upload, format: :json, params: { employees: @file }
     end
 
-    it "should response with status 'created'" do      
-      expect(response).to have_http_status(:created)    
+    it "should response with status 'created'" do
+      expect(response).to have_http_status(:created)
     end
 
-    it 'should have valid collection size of response' do      
+    it 'should have valid collection size of response' do
       expect(response.body).to have_json_size(2)
     end
   end
 
   context 'no attachment' do
     before :each do
-      sign_in(manager, scope: :user)      
+      sign_in(manager, scope: :user)
     end
 
     it "should response with status 'created'" do
       post :upload, format: :json
-      expect(response).to have_http_status(:no_content)    
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

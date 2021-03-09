@@ -19,6 +19,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string           not null
+#  phone                  :string(20)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -46,6 +47,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: true
+  validates :phone, phone: { possible: true, allow_blank: true, types: [:mobile] }
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable

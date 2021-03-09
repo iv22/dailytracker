@@ -10,7 +10,7 @@ module Api
       rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
       rescue_from ArgumentError, with: :params_invalid
 
-      USER_PROPS = %i[email first_name last_name role].freeze
+      USER_PROPS = %i[email first_name last_name role phone].freeze
 
       def index
         authorize! Object, with: Employees::UserPolicy
