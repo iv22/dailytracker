@@ -1,33 +1,33 @@
 # frozen_string_literal: true
 
 module Employees
-  class CsvMemberInviter < ApplicationService
-    attr_reader :attachment, :user_props, :company, :approved_users
+  class CsvParser < ApplicationService
+    attr_reader :attachment, :company, :approved_users
 
-    def initialize(attachment, user_props, company)
+    USER_PROPS = %i[email first_name last_name role phone].freeze
+
+    def initialize(attachment, company)
       super()
       @attachment = attachment
-      @user_props = user_props
       @company = company
       @approved_users = []
     end
 
     def call
       CSV.foreach(attachment, headers: true, header_converters: :symbol, col_sep: ';') do |row|
-        columns ||= row.headers.intersection(user_props)
+        columns ||= row.headers.intersection(USER_PROPS)
         params = {}
         columns.each { |name| params[name.to_s] = row[name] }
         user = invite_employee(params, company)
         @approved_users << user if user
       end
-      approved_users
     end
 
     private
 
     def invite_employee(params, company)
       Employees::MemberCreator.call(params, company)
-    rescue ActiveRecord::StatementInvalid
+    rescue ActiveRecord::ActiveRecordError
       nil
     end
   end

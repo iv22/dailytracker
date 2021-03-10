@@ -2,17 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe Employees::CsvMemberInviter, type: :controller do
+RSpec.describe Employees::CsvParser, type: :controller do
   let!(:source) { fixture_file_upload('files/employees.csv', 'text/csv') }
   let!(:props) { %i[email first_name last_name role phone].freeze }
   let!(:company) { FactoryBot.create(:company) }
 
   before do
-    @members = Employees::CsvMemberInviter.call(source, props, company)
-  end
-
-  it 'should return list of Employees created from csv-source' do
-    expect(@members.size).to eq(2)
+    @members = Employees::CsvParser.call(source, company)
   end
 
   it 'should store all valid Employees to DB' do

@@ -17,10 +17,6 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     it "should response with status 'created'" do
       expect(response).to have_http_status(:created)
     end
-
-    it 'should have valid collection size of response' do
-      expect(response.body).to have_json_size(2)
-    end
   end
 
   context 'no attachment' do

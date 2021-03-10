@@ -10,8 +10,6 @@ module Api
       rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
       rescue_from ArgumentError, with: :params_invalid
 
-      USER_PROPS = %i[email first_name last_name role phone].freeze
-
       def index
         authorize! Object, with: Employees::UserPolicy
         @members = company.members
@@ -50,8 +48,8 @@ module Api
         if attachment.blank?
           respond_to { |format| format.json { head :no_content } }
         else
-          @members = Employees::CsvMemberInviter.call(attachment, USER_PROPS, company)
-          render json: @members, each_serializer: UserSerializer, status: :created
+          Employees::CsvParser.call(attachment, company)
+          render json: { message: I18n.t('employees.upload') }, status: :created
         end
       end
 
@@ -66,7 +64,7 @@ module Api
       end
 
       def member_params
-        @member_params ||= Employees::MemberParams.call(params, USER_PROPS)
+        @member_params ||= Employees::MemberParams.call(params)
       end
 
       def params_invalid(error)
