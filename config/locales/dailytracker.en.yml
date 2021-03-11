@@ -1,3 +1,5 @@
 en:
   employees:
-    upload: 'Uploading Employees has been started'
+    upload:
+      started: 'Employees uploading has been started'
+      invalid_headers: 'File headers are invalid'

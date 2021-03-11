@@ -48,8 +48,8 @@ module Api
         if attachment.blank?
           respond_to { |format| format.json { head :no_content } }
         else
-          Employees::CsvParser.call(attachment, company)
-          render json: { message: I18n.t('employees.upload') }, status: :created
+          message = Employees::CsvParser.call(attachment, company)
+          render json: { message: message }, status: :created
         end
       end
 
