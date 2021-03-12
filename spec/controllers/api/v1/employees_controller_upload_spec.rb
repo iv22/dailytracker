@@ -15,7 +15,7 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
     end
 
     it "should response with status 'created'" do
-      expect(response).to have_http_status(:created)
+      expect(response).to have_http_status(:accepted)
     end
   end
 

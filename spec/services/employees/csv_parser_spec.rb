@@ -19,9 +19,22 @@ RSpec.describe Employees::CsvParser, type: :controller do
 
     expect(attributes).to eq(
       [
-        { id: nil, email: 'qwerty@tut.by', first_name: 'Ivan', last_name: 'Ivanov', role: 'employee', phone: nil },
-        { id: nil, email: 'mm@tut.by', first_name: 'Mike', last_name: 'Miller', role: 'manager',
-          phone: '+375294967365' }
+        {
+          id: nil,
+          email: 'qwerty@tut.by',
+          first_name: 'Ivan',
+          last_name: 'Ivanov',
+          role: 'employee',
+          phone: nil
+        },
+        {
+          id: nil,
+          email: 'mm@tut.by',
+          first_name: 'Mike',
+          last_name: 'Miller',
+          role: 'manager',
+          phone: '+375294967365'
+        }
       ]
     )
   end

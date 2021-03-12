@@ -7,7 +7,7 @@ module Employees
     def initialize(params)
       super()
       @member_params = params.require(:member)
-                             .permit(:email, :first_name, :last_name, :role, :phone)
+                             .permit(Employees::Props::USER)
     end
 
     def call

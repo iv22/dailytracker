@@ -47,9 +47,11 @@ module Api
         attachment = params[:employees]
         if attachment.blank?
           respond_to { |format| format.json { head :no_content } }
+        elsif Employees::CsvHeadersValidator.call(attachment)
+          Delayed::Job.enqueue ImportEmployeesWorker.new(attachment, company)
+          render json: { message: I18n.t('employees.upload.started') }, status: :accepted
         else
-          message = Employees::CsvParser.call(attachment, company)
-          render json: { message: message }, status: :created
+          render json: { message: I18n.t('employees.upload.invalid_headers') }, status: :not_acceptable
         end
       end
 
