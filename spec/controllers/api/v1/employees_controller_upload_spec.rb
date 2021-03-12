@@ -24,7 +24,7 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
       sign_in(manager, scope: :user)
     end
 
-    it "should response with status 'created'" do
+    it "should response with status 'no_content'" do
       post :upload, format: :json
       expect(response).to have_http_status(:no_content)
     end

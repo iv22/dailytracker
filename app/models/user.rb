@@ -53,4 +53,16 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
+
+  def self.permitted_props
+    %i[email first_name last_name role phone].freeze
+  end
+
+  def self.optional_props
+    %i[phone].freeze
+  end
+
+  def self.required_props
+    permitted_props - optional_props
+  end
 end

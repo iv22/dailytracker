@@ -45,14 +45,7 @@ module Api
       def upload
         authorize! Object, with: Employees::UserPolicy
         attachment = params[:employees]
-        if attachment.blank?
-          respond_to { |format| format.json { head :no_content } }
-        elsif Employees::CsvHeadersValidator.call(attachment)
-          Delayed::Job.enqueue ImportEmployeesWorker.new(attachment, company)
-          render json: { message: I18n.t('employees.upload.started') }, status: :accepted
-        else
-          render json: { message: I18n.t('employees.upload.invalid_headers') }, status: :not_acceptable
-        end
+        Employees::UploadingAssistant.call(attachment, company, self)
       end
 
       private

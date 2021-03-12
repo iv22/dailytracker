@@ -26,8 +26,8 @@ module Employees
     private
 
     def iterate_csv_body
-      CSV.foreach(attachment, **Employees::Props::CSV_OPTIONS) do |row|
-        columns ||= row.headers & Employees::Props::USER
+      CSV.foreach(attachment, **Csv::Utils.options) do |row|
+        columns ||= row.headers & User.permitted_props
         params = {}
         columns.each { |name| params[name.to_s] = row[name] }
         yield params

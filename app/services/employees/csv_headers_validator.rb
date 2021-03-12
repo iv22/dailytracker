@@ -10,14 +10,14 @@ module Employees
     end
 
     def call
-      csv_headers = []
+      valid_headers = false
 
-      CSV.foreach(attachment, **Employees::Props::CSV_OPTIONS) do |row|
-        csv_headers = row.headers
+      CSV.foreach(attachment, **Csv::Utils.options) do |row|
+        valid_headers = (User.required_props - row.headers).empty?
         break
       end
 
-      (Employees::Props::REQUIRED_USER - csv_headers).empty?
+      valid_headers
     rescue CSV::MalformedCSVError
       false
     end

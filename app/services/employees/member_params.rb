@@ -6,8 +6,7 @@ module Employees
 
     def initialize(params)
       super()
-      @member_params = params.require(:member)
-                             .permit(Employees::Props::USER)
+      @member_params = params.require(:member).permit(User.permitted_props)
     end
 
     def call
