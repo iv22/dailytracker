@@ -39,13 +39,15 @@ module Api
       def destroy
         authorize! member, with: Employees::UserPolicy
         member.destroy
-        respond_to { |format| format.json { head :no_content } }
+        no_content_response
       end
 
       def upload
         authorize! Object, with: Employees::UserPolicy
         attachment = params[:employees]
-        Employees::UploadingAssistant.call(attachment, company, self)
+        no_content = -> { no_content_response }
+        json_content = ->(message, status) { render json: { message: message }, status: status }
+        Employees::UploadingAssistant.call(attachment, company, no_content, json_content)
       end
 
       private
@@ -64,6 +66,10 @@ module Api
 
       def params_invalid(error)
         render json: { error: error.message }, status: :unprocessable_entity
+      end
+
+      def no_content_response
+        respond_to { |format| format.json { head :no_content } }
       end
     end
   end
