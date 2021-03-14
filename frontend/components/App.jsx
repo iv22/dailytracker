@@ -2,33 +2,40 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Main from 'components/Main';
 import { BrowserRouter as Router } from "react-router-dom";
+import ellipse from 'components/Images/ellipse.svg';
+import squareModule from 'components/Images/square_module.svg';
+import personBig from 'components/Images/person_big.svg';
+import circleBig from 'components/Images/circle_big.svg';
+import plus from 'components/Images/plus.svg';
+import twoPersons from 'components/Images/two_persons.svg';
+import gear from 'components/Images/gear.svg';
 
 const App = () => {
   return (
     <Router>
       <main className="main-container">
         <header className="header">
-          <img className="ellipse" src={require('components/Images/ellipse.png')} alt="ellipse" />
+          <img className="ellipse" src={ellipse} alt="ellipse" />
           <h1 className="name-project">Daily Tracker</h1>
           <nav className="main-nav">
             <ul className="main-links">
-              <img className="vector-1" src={require('components/Images/square_module.png')} alt="square_module" />
+              <img className="vector-1" src={squareModule} alt="square_module" />
               <li className="nav-dashboard">
                 <Link to="/">Dashboard</Link>
               </li>
-              <img className="vector-2" src={require('components/Images/person_big.png')} alt="person_big" />
+              <img className="vector-2" src={personBig} alt="person_big" />
               <li className="nav-employees">
                 <Link to="/employee">Employees</Link>
-                <img className="background-1" src={require('components/Images/circle_big.png')} alt="circle_big" />
-                <img className="vector-5" src={require('components/Images/plus.png')} alt="plus" />
+                <img className="background-1" src={circleBig} alt="circle_big" />
+                <img className="vector-5" src={plus} alt="plus" />
               </li>
-              <img className="vector-3" src={require('components/Images/two_persons.png')} alt="two_persons" />
+              <img className="vector-3" src={twoPersons} alt="two_persons" />
               <li className="nav-teams">
                 <Link to="/teams">Teams</Link>
-                <img className="background-2" src={require('components/Images/circle_big.png')} alt="circle_big" />
-                <img className="vector-5" src={require('components/Images/plus.png')} alt="plus" />
+                <img className="background-2" src={circleBig} alt="circle_big" />
+                <img className="vector-5" src={plus} alt="plus" />
               </li>
-              <img className="vector-4" src={require('components/Images/gear.png')} alt="gear" />
+              <img className="vector-4" src={gear} alt="gear" />
               <li className="nav-settings">
                 <Link to="/settings">Settings</Link>
               </li>
