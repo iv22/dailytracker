@@ -32,4 +32,8 @@ class ApplicationController < ActionController::Base
   def record_invalid(error)
     render json: { error: error.message }, status: :unprocessable_entity
   end
+
+  def no_content_response
+    respond_to { |format| format.json { head :no_content } }
+  end
 end

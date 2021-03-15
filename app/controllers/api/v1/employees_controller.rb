@@ -45,9 +45,12 @@ module Api
       def upload
         authorize! Object, with: Employees::UserPolicy
         attachment = params[:employees]
-        no_content = -> { no_content_response }
-        json_content = ->(message, status) { render json: { message: message }, status: status }
-        Employees::UploadingAssistant.call(attachment, company, no_content, json_content)
+        if attachment.blank?
+          no_content_response
+        else
+          answer = Employees::UploadingAssistant.call(attachment, company)
+          render json: { message: answer[:message] }, status: answer[:status]
+        end
       end
 
       private
@@ -66,10 +69,6 @@ module Api
 
       def params_invalid(error)
         render json: { error: error.message }, status: :unprocessable_entity
-      end
-
-      def no_content_response
-        respond_to { |format| format.json { head :no_content } }
       end
     end
   end

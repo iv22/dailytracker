@@ -2,24 +2,20 @@
 
 module Employees
   class UploadingAssistant < ApplicationService
-    attr_reader :attachment, :company, :no_content, :json_content
+    attr_reader :attachment, :company
 
-    def initialize(attachment, company, no_content, json_content)
+    def initialize(attachment, company)
       super()
       @attachment = attachment
       @company = company
-      @no_content = no_content
-      @json_content = json_content
     end
 
     def call
-      if attachment.blank?
-        no_content.call
-      elsif CsvHeadersValidator.call(attachment)
+      if Employees::CsvHeadersValidator.call(attachment)
         run_import
-        json_content.call(I18n.t('employees.upload.started'), :accepted)
+        { message: I18n.t('employees.upload.started'), status: :accepted }
       else
-        json_content.call(I18n.t('employees.upload.invalid_headers'), :not_acceptable)
+        { message: I18n.t('employees.upload.invalid_headers'), status: :not_acceptable }
       end
     end
 
