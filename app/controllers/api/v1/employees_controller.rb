@@ -39,7 +39,18 @@ module Api
       def destroy
         authorize! member, with: Employees::UserPolicy
         member.destroy
-        respond_to { |format| format.json { head :no_content } }
+        no_content_response
+      end
+
+      def upload
+        authorize! Object, with: Employees::UserPolicy
+        attachment = params[:employees]
+        if attachment.blank?
+          no_content_response
+        else
+          answer = Employees::UploadingAssistant.call(attachment, company)
+          render json: { message: answer[:message] }, status: answer[:status]
+        end
       end
 
       private

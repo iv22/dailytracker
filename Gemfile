@@ -8,6 +8,8 @@ ruby '2.7.1'
 # Authorization framework
 gem 'action_policy', '~> 0.5.5'
 gem 'active_model_serializers', '~> 0.10.12'
+gem 'activerecord-import', '~> 1.0.8'
+gem 'delayed_job_active_record', '~> 4.1.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
@@ -35,6 +37,7 @@ gem 'devise', '~> 4.7.3'
 gem 'devise_invitable', '~> 2.0.3'
 # OOP Delegator
 gem 'draper', '~> 4.0.1'
+gem 'phonelib', '~> 0.6.48'
 # flexible components to create your forms
 gem 'simple_form', '~> 5.1.0'
 # simple template

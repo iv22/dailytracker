@@ -8,7 +8,8 @@ RSpec.describe Employees::MemberCreator, type: :controller do
       email: Faker::Internet.unique.email,
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      role: 'employee'
+      role: 'employee',
+      phone: '+12125551234'
     }
   end
   let(:company) { FactoryBot.create(:company) }

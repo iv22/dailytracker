@@ -23,6 +23,10 @@ module Employees
       manager_for?(record)
     end
 
+    def upload?
+      manager?
+    end
+
     private
 
     def manager?

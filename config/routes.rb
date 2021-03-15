@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, defaults: { format: :json } do
-    namespace :v1 do      
-      resources :employees, except: [:new, :edit]      
+    namespace :v1 do
+      resources :employees, except: [:new, :edit]
+      post 'employees/upload', to: 'employees#upload'
     end
   end
 

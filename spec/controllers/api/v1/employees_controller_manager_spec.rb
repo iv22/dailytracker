@@ -46,7 +46,8 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
         'email' => Faker::Internet.unique.email,
         'first_name' => employee.first_name,
         'last_name' => employee.last_name,
-        'role' => employee.role
+        'role' => employee.role,
+        'phone' => employee.phone
       } }
 
       post :create, format: :json, params: @params
@@ -70,7 +71,8 @@ RSpec.describe Api::V1::EmployeesController, type: :controller do
                     'email' => managed_employee.email,
                     'first_name' => "f#{managed_employee.first_name}",
                     'last_name' => "l#{managed_employee.last_name}",
-                    'role' => managed_employee.role
+                    'role' => managed_employee.role,
+                    'phone' => managed_employee.phone
                   } }
 
       put :update, format: :json, params: @params
