@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from "react-router-dom";
 import TeamApp from 'components/Teams/TeamApp';
 import DashboardApp from 'components/Dashboard/DashboardApp';
-import EmployeeApp from 'components/Employee/EmployeeApp';
+import EmployeeApp from 'components/Employees/EmployeeApp';
 import SettingsApp from 'components/Settings/SettingsApp';
 import 'components/Style.css';
 import 'components/Teams/styles.css';
@@ -13,7 +13,7 @@ export default () => {
       <Route exact path="/" >
         <DashboardApp />
       </Route>
-      <Route exact path="/employee">
+      <Route exact path="/employees">
         <EmployeeApp />
       </Route>
       <Route exact path="/teams">
