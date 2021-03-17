@@ -5,6 +5,7 @@ import DashboardApp from 'components/Dashboard/DashboardApp';
 import EmployeeApp from 'components/Employee/EmployeeApp';
 import SettingsApp from 'components/Settings/SettingsApp';
 import 'components/Style.css';
+import 'components/Teams/styles.css';
 
 export default () => {
   return (
