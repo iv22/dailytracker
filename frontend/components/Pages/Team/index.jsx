@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SeparateTeam from './Selected';
-import Ball from 'images/ball.svg';
-import Person from 'images/person.svg';
-import Rubbish from 'images/rubbish.svg';
-import DullCircle from 'images/dull_circle.svg';
-import DimPlus from 'images/dim_plus.svg';
-import './style.css';
+import './style';
+import { Ball, Person, Rubbish, DullCircle, DimPlus } from "components/General/Icons";
 
 const Team = () => {
   const [teams, setTeams] = useState([]);
@@ -22,51 +18,55 @@ const Team = () => {
       <nav className="nav">
         <h3 className="all-names">All teams</h3>
         <span>
-          <div className="vector-7" alt="ball">
+          <div className="ball-icon" alt="ball">
             <Ball />
           </div>
-          <div className="vector-8" alt="person">
+          <div className="person-icon" alt="person">
             <Person />
           </div>
         </span>
       </nav>
-      <article className="article-teams">
-        <aside className="teams-name">
-          <table className="team-table">
+      <article className="article-content">
+        <aside className="aside">
+          <table className="aside-content">
             <thead>
               <tr>
-                <th className="team-head">Team name</th>
+                <th className="aside-title">Team name</th>
               </tr>
             </thead>
             <tbody>
               {teams.map((team) => (
-                <tr className="team-body" key={team.id}>
-                  <td className="team-name" onClick={() => setActiveTeam(team)}>
+                <tr key={team.id}>
+                  <td className="aside-name" onClick={() => setActiveTeam(team)}>
                     {team.name}
-                    <div className="vector-9" alt="ball">
+                    <div className="t-ball-icon" alt="ball">
                       <Ball />
                     </div>
-                    <div className="vector-10" alt="person">
+                    <div className="t-person-icon" alt="person">
                       <Person />
                     </div>
-                    <div className="vector-13" alt="rubbish">
+                    <div className="t-rubbish-icon" alt="rubbish">
                       <Rubbish />
                     </div>
                   </td>
                 </tr>
               ))}
+              <tr>
+                <td>
+                  <div className="t-dullCircle-icon" alt="dull_circle">
+                    <DullCircle />
+                  </div>
+                  <div className="t-dimPlus-icon" alt="dim_plus">
+                    <DimPlus />
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <div className="vector-11" alt="dull_circle">
-            <DullCircle />
-          </div>
-          <div className="vector-12" alt="dim_plus">
-            <DimPlus />
-          </div>
         </aside>
-        <footer className="team-members">
+        <footer className="footer">
           {activeTeam ? (
-            <ul className="separate-team">
+            <ul className="footer-content">
               <li>
                 {<SeparateTeam activeTeam={activeTeam} />}
               </li>
