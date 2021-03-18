@@ -50,7 +50,7 @@ module Api
       private
 
       def team_params
-        params.require(:team_user).permit(:name, :team_id)
+        params.require(:team_user).permit(:user_id, :team_id)
       end
 
       def user

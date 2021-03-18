@@ -20,5 +20,5 @@
 #  fk_rails_...  (team_id => teams.id)
 #
 class TeamUserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :is_team_lead
+  attributes :user_id, :team_id, :is_team_lead
 end

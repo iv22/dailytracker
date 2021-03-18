@@ -21,6 +21,7 @@
 #
 FactoryBot.define do
     factory :team_user do
-      name { Faker::Name.name }
+      association :team, factory: :team
+      association :user, factory: :user
     end
   end

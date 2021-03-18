@@ -21,6 +21,5 @@
 #
 class TeamUser < ApplicationRecord
   belongs_to :team, class_name: 'Team'
-
-  validates :name, presence: true
+  belongs_to :user, class_name: 'User'
 end

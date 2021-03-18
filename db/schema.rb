@@ -59,12 +59,13 @@ ActiveRecord::Schema.define(version: 2021_03_23_105118) do
   end
 
   create_table "team_users", force: :cascade do |t|
-    t.string "name"
     t.boolean "is_team_lead", null: false
+    t.bigint "user_id", null: false
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_team_users_on_team_id"
+    t.index ["user_id"], name: "index_team_users_on_user_id", unique: true
   end
 
   create_table "teams", force: :cascade do |t|

@@ -26,10 +26,5 @@ teams = Team.create!([
 ])
 
 team_user = TeamUser.create!([
-  {name: 'David', team: teams[0], is_team_lead: false },
-  {name: 'Mark', team: teams[0], is_team_lead: false },
-  {name: 'Den', team: teams[0], is_team_lead: false },
-  {name: 'Marat', team: teams[1], is_team_lead: false },
-  {name: 'Tomas', team: teams[1], is_team_lead: false },
-  {name: 'Gleb', team: teams[1], is_team_lead: false }
+  {user:user, team: teams[2], is_team_lead: false }
 ])
