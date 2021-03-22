@@ -1,14 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import EmployeesList from 'components/Employees/EmployeesList';
+import EmployeesUpload from 'components/Employees/EmployeesUpload';
+import Employee from 'components/Employees/Employee';
+import "./global.pcss";
 import "./employee.pcss";
 
 const EmployeeApp = () => {
-  const [employees, setEmployees] = useState([]);
 
-  useEffect(() => {
-    fetch('/api/v1/employees')
-      .then((response) => response.json())
-      .then((employees) => setEmployees(employees));
-  }, []);
+  function showModal(e) {
+    let id;
+    switch (e.currentTarget.id) {
+      case "e-upload-button":
+        id = "e-upload"
+        break;
+      case "e-add-employee-button":
+        id = "e-employee"
+        break;
+    }
+    let modal = document.getElementById(id);
+    modal.style.display = "block";
+  }
 
   return (
     <section className="section">
@@ -16,43 +27,28 @@ const EmployeeApp = () => {
         <h3 className="all-names">All Employees</h3>
       </nav>
 
-      <div id="e_parent">
-        <div id="e_color_layer"></div>
-        <span id="e_title">All employees</span>
-        <button id="e_upload_button" type="button">Upload</button>
-        <div id="e_htop_line"></div>
-        <div id="e_hbottom_line"></div>
+      <div id="e-parent">
+        <div id="e-color-layer" className="smooth"></div>
+        <span id="e-title">All employees</span>
+        <button id="e-upload-button" type="button" className="smooth-button e-clickable submit-color"
+          onClick={showModal}>
+          <div className="btn-icon"></div>
+          Upload
+        </button>
 
-        <table id="e_index_table">
-          <thead id="e_index_head">
-            <tr>
-              <th id="e_icon_head"></th>
-              <th id="e_name_head">Name</th>
-              <th id="e_email_head">Email</th>
-              <th id="e_phone_head">Phone</th>
-              <th id="e_role_head">Role</th>
-              <th id="e_status_head">Status</th>
-              <th id="e_action_head">Action</th>
-            </tr>
-          </thead>
-          <tbody id="e_index_body">
-            {employees.map((emp) => (
-              <tr className="e_index_row">
-                <td className="e_icon">
-                  <div id="e_cicle"></div>
-                  <div id="e_person"></div>
-                </td>
-                <td>{emp.first_name + ' ' + emp.last_name}</td>
-                <td>{emp.email}</td>
-                <td>{emp.phone}</td>
-                <td>{emp.role}</td>
-                <td></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <EmployeesList />
+        <EmployeesUpload />
+        <Employee />
+
+        <div id="e-htop-line"></div>
+        <div id="e-hbottom-line"></div>
+
+        <div id="e-add-employee-button" className="e-cicle e-add-person-cicle e-clickable" onClick={showModal}>
+          <div id="e-add-person-icon" className="e-cicle"></div>
+          <span id="e-add-person-text">Add employee</span>
+        </div>
       </div>
     </section>
   )
 }
-export default EmployeeApp
+export default EmployeeApp;
