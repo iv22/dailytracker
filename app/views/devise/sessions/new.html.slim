@@ -1,23 +1,19 @@
-.row
-  .col-md-4.offset-sm-1
-    br
-    h3 Log in
-    hr
+body.app
+  h1.app-title-login Daily Tracker
+  //img.ellipse src="components/Images/ellipse.svg" alt="ellipse"
+  div
     = simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
       = render "devise/shared/error_messages"
       = render "devise/shared/info_messages"
-      = f.input :email, required: false, autofocus: true
-      - if @minimum_password_length
-        em 
-          = @minimum_password_length
-          |  characters minimum
-      = f.input :password, required: false
-      = f.input :remember_me, as: :boolean, wrapper: :horizontal_boolean, label: ''
-
-      .row
-        .col-md-3
-          = f.button :submit, 'Log in', class: 'btn-primary'
-      br
-      .row    
-        .col-md-auto
-          h6 = render "devise/shared/links"
+      = field_set_tag 'Login' do
+       = f.email_field 'email', placeholder: "john@gmail.com", required: false, autofocus: true
+      = field_set_tag 'Password' do
+       = f.password_field 'password', placeholder: "At last 6 simbols...", required: false
+      = f.input :remember_me, as: :boolean
+      = f.button :submit, 'Log in'
+      div.too 
+        h6 = render "devise/shared/links"
+          // img.facebook src="facebook.svg" alt="facebook"
+          // img.vk src="vk.svg" alt="vk"
+          // img.g src="g+.svg" alt="g+"
+          
