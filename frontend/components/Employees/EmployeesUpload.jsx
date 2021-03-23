@@ -6,14 +6,14 @@ const EmployeesUpload = () => {
     document.addEventListener('mousedown', hideUploadForm);
   }, []);
 
-  function hideUploadForm(e) {
+  const hideUploadForm = (e) => {
     let modal = document.getElementById("e-upload");
     if (e.target == modal) {
       modal.style.display = "none";
     }
   }
 
-  function onCloseForm(e) {
+  const onCloseForm = (e) => {
     let modal = document.getElementById("e-upload");
     modal.style.display = "none";
   }

@@ -7,7 +7,7 @@ import "./employee.pcss";
 
 const EmployeeApp = () => {
 
-  function showModal(e) {
+  const showModal = (e) => {
     let id;
     switch (e.currentTarget.id) {
       case "e-upload-button":
