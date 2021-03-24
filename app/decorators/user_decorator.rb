@@ -7,4 +7,14 @@ class UserDecorator < Draper::Decorator
   def company
     object.company_user&.company
   end
+
+  def status
+    if object.access_locked?
+      'locked'
+    elsif object.confirmed_at
+      'active'
+    else
+      'invited'
+    end
+  end
 end

@@ -19,6 +19,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string           not null
+#  locked_at              :datetime
 #  phone                  :string(20)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -50,9 +51,9 @@ class User < ApplicationRecord
   validates :phone, phone: { possible: true, allow_blank: true, types: [:mobile] }
 
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
+  # :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :lockable
 
   def self.permitted_props
     %i[email first_name last_name role phone].freeze

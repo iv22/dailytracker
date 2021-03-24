@@ -3,3 +3,7 @@ en:
     upload:
       started: 'Employees uploading has been started'
       invalid_headers: 'File headers are invalid'
+    invite:
+      already_confirmed: 'Invitation has already been confirmed'
+      resended: 'Invitation was resended successfully'
+      rejected: 'Invitation resending was rejected'

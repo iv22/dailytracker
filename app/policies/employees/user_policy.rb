@@ -3,6 +3,8 @@
 module Employees
   # Check current User credentials
   class UserPolicy < ApplicationPolicy
+    include Credentials
+
     def index?
       manager?
     end
@@ -25,16 +27,6 @@ module Employees
 
     def upload?
       manager?
-    end
-
-    private
-
-    def manager?
-      user.role == 'manager'
-    end
-
-    def manager_for?(member)
-      manager? && user.company_user.company == member.company
     end
   end
 end

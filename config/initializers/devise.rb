@@ -31,6 +31,12 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
+
+  # lockable
+  config.lock_strategy = :none
+  config.unlock_keys = [ :email ]
+  config.unlock_strategy = :none
+
   # invitable
   config.invite_for = 2.weeks
 end
