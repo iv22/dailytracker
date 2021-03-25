@@ -1,29 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ModalButtons from 'components/ModalButtons';
 
-const Employee = () => {
+const EmployeePopup = (props) => {
 
-  useEffect(() => {
-    document.addEventListener('mousedown', hideEmployeeForm);
-  }, []);
-
-  const hideEmployeeForm = (e) => {
-    let modal = document.getElementById("e-employee");
-    if (e.target == modal) {
-      modal.style.display = "none";
+  const handleFormClose = (e) => {
+    if (e.target.id == "e-employee") {
+      props.handleShow(false);
     }
   }
 
-  const saveClickHandler = () => {
+  const handleSaveClick = () => {
     console.log('SAVE')
   }
 
-  const cancelClickHandler = () => {
-    document.getElementById("e-employee").style.display = "none";
-  }
-
   return (
-    <div id="e-employee" className="modal smooth">
+    <div id="e-employee" className="modal smooth" onClick={handleFormClose} >
       <div className="modal-edit right">
         <form name="member">
           <p className="modal-title">Employee</p>
@@ -49,11 +40,11 @@ const Employee = () => {
               <input type="tel" id="e-employee-phone" name="phone" className="modal-input"></input>
             </div>
           </div>
-          <ModalButtons save={saveClickHandler} cancel={cancelClickHandler} />
+          <ModalButtons save={handleSaveClick} cancel={() => props.handleShow(false)} />
         </form>
       </div>
     </div>
   )
 }
 
-export default Employee;
+export default EmployeePopup;

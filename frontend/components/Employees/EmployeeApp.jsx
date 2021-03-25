@@ -1,25 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EmployeesList from 'components/Employees/EmployeesList';
 import EmployeesUpload from 'components/Employees/EmployeesUpload';
-import Employee from 'components/Employees/Employee';
+import EmployeePopup from 'components/Employees/EmployeePopup';
 import "./global.pcss";
 import "./employee.pcss";
 
 const EmployeeApp = () => {
-
-  const showModal = (e) => {
-    let id;
-    switch (e.currentTarget.id) {
-      case "e-upload-button":
-        id = "e-upload"
-        break;
-      case "e-add-employee-button":
-        id = "e-employee"
-        break;
-    }
-    let modal = document.getElementById(id);
-    modal.style.display = "block";
-  }
+  const [isEmployeeModalOpen, setIsEmployeeModalOpen] = useState(false);
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
   return (
     <section className="section">
@@ -31,19 +19,20 @@ const EmployeeApp = () => {
         <div id="e-color-layer" className="smooth"></div>
         <span id="e-title">All employees</span>
         <button id="e-upload-button" type="button" className="smooth-button e-clickable submit-color"
-          onClick={showModal}>
+          onClick={() => setIsUploadModalOpen(true)}>
           <div className="btn-icon"></div>
           Upload
         </button>
 
         <EmployeesList />
-        <EmployeesUpload />
-        <Employee />
+        {isUploadModalOpen && <EmployeesUpload handleShow={setIsUploadModalOpen}/>}
+        {isEmployeeModalOpen && <EmployeePopup handleShow={setIsEmployeeModalOpen}/>}
 
         <div id="e-htop-line"></div>
         <div id="e-hbottom-line"></div>
 
-        <div id="e-add-employee-button" className="e-cicle e-add-person-cicle e-clickable" onClick={showModal}>
+        <div id="e-add-employee-button" className="e-cicle e-add-person-cicle e-clickable"
+          onClick={() => setIsEmployeeModalOpen(true)}>
           <div id="e-add-person-icon" className="e-cicle"></div>
           <span id="e-add-person-text">Add employee</span>
         </div>

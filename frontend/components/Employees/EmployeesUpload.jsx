@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const EmployeesUpload = () => {
+const EmployeesUpload = (props) => {
 
-  useEffect(() => {
-    document.addEventListener('mousedown', hideUploadForm);
-  }, []);
-
-  const hideUploadForm = (e) => {
-    let modal = document.getElementById("e-upload");
-    if (e.target == modal) {
-      modal.style.display = "none";
+  const handleFormClose = (e) => {
+    if (e.target.id == "e-upload") {
+      props.handleShow(false);
     }
   }
 
-  const onCloseForm = (e) => {
-    let modal = document.getElementById("e-upload");
-    modal.style.display = "none";
-  }
-
   return (
-    <div id="e-upload" className="modal smooth">
+    <div id="e-upload" className="modal smooth" onClick={handleFormClose}>
       <div id="e-upload-form" className="modal-upload smooth">
-        <span className="close" onClick={onCloseForm}>
+        <span className="close" onClick={() => props.handleShow(false)}>
           &times;
         </span>
         <div className="e-upload-dropzone"></div>
