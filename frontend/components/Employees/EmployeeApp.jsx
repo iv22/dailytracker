@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import EmployeesList from 'components/Employees/EmployeesList';
-import EmployeesUpload from 'components/Employees/EmployeesUpload';
+import React, { useState } from "react";
+import EmployeesList from "components/Employees/EmployeesList";
+import EmployeesUpload from "components/Employees/EmployeesUpload";
 import "./global.pcss";
 import "./employee.pcss";
 
