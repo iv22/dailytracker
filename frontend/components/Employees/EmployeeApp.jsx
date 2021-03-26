@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import EmployeesList from 'components/Employees/EmployeesList';
 import EmployeesUpload from 'components/Employees/EmployeesUpload';
-import EmployeePopup from 'components/Employees/EmployeePopup';
 import "./global.pcss";
 import "./employee.pcss";
 
 const EmployeeApp = () => {
-  const [isEmployeeModalOpen, setIsEmployeeModalOpen] = useState(false);
-  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
 
   return (
     <section className="section">
@@ -19,23 +17,16 @@ const EmployeeApp = () => {
         <div id="e-color-layer" className="smooth"></div>
         <span id="e-title">All employees</span>
         <button id="e-upload-button" type="button" className="smooth-button e-clickable submit-color"
-          onClick={() => setIsUploadModalOpen(true)}>
+          onClick={() => setIsUploadOpen(true)}>
           <div className="btn-icon"></div>
           Upload
         </button>
 
+        {isUploadOpen && <EmployeesUpload handleShow={setIsUploadOpen}/>}
         <EmployeesList />
-        {isUploadModalOpen && <EmployeesUpload handleShow={setIsUploadModalOpen}/>}
-        {isEmployeeModalOpen && <EmployeePopup handleShow={setIsEmployeeModalOpen}/>}
 
         <div id="e-htop-line"></div>
         <div id="e-hbottom-line"></div>
-
-        <div id="e-add-employee-button" className="e-cicle e-add-person-cicle e-clickable"
-          onClick={() => setIsEmployeeModalOpen(true)}>
-          <div id="e-add-person-icon" className="e-cicle"></div>
-          <span id="e-add-person-text">Add employee</span>
-        </div>
       </div>
     </section>
   )

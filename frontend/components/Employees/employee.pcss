@@ -20,16 +20,13 @@
 	top: 145px;
 }
 
-#e-index-head {
+#e-index-head tr {
 	font-family: Roboto;
 	vertical-align: top;
 	text-align: left;
 	font-size: 24px;
 	letter-spacing: 0;
-}
-
-#e-index-head tr {
-	height: 98px;
+	height: 48px;
 }
 
 #e-icon-head {
@@ -63,8 +60,16 @@
 	letter-spacing: 0;
 }
 
+.e-action-row {
+	height: 42px;
+}
+
 .e-index-row {
 	height: 42px;
+}
+
+.e-index-row:hover {
+	background-color: var(--submit-light)
 }
 
 .e-icon {
@@ -88,8 +93,6 @@
 
 .e-add-person-cicle {
 	background-color: var(--submit-light);
-	left: 20px;
-	top: 198px;
 }
 
 .e-clickable:hover {
@@ -97,6 +100,11 @@
 	background-color: var(--selected-color);
 }
 
+.e-clickable-icon:hover {
+  cursor: pointer;
+}
+
+td.e-icon .e-add-person-cicle,
 td.e-icon .e-person-cicle {
 	left: 0px;
 	top: 0px;
@@ -108,7 +116,6 @@ td.e-icon .e-person-cicle {
 	position: absolute;
 	left: 12px;
 	top: 12px;
-  background-image: url(../Images/person.svg);
 }
 
 #e-title {
@@ -143,13 +150,13 @@ td.e-icon .e-person-cicle {
 	width: 14px;
 	height: 14px;
 	position: absolute;
+	left: 0;
 	left: calc(50% - 14px/2);
 	top: calc(50% - 14px/2);
-  background-image: url(../Images/dim_plus.svg);
 }
 
 #e-add-person-text {
-	width: 200px;
+	width: 100px;
 	position: absolute;
 	left: calc(100% + 2px);
 	top: 25%;
@@ -183,37 +190,7 @@ td.e-icon .e-person-cicle {
 	height: 26px;
 	top: 0px;
 	display: inline-block;
-	margin: 3px;
-}
-
-.e-invite {
-  background: url(../Images/send.svg) no-repeat;
-	background-size: 26px;
-}
-.e-invite:hover {
-  background: url(../Images/send_red.svg) no-repeat;
-	background-size: 26px;
-}
-
-.e-edit {
-  background: url(../Images/edit.svg) no-repeat;
-	background-size: 20px;
-}
-.e-edit:hover {
-  background: url(../Images/edit_red.svg) no-repeat;
-	background-size: 20px;
-}
-
-.e-lock {
-  background: url(../Images/lock.svg) no-repeat;
-}
-
-.e-lock:hover {
-  background: url(../Images/lock_red.svg) no-repeat;
-}
-
-.e-index-row:hover {
-	background-color: var(--submit-light)
+	margin: 2px;
 }
 
 #e-upload-form button {
