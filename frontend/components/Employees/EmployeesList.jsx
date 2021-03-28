@@ -8,6 +8,7 @@ const EmployeesList = () => {
   const [employees, setEmployees] = useState([]);
   const [isEmployeeOpen, setIsEmployeeOpen] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [id, setId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,9 +22,14 @@ const EmployeesList = () => {
     fetchData();
   }, []);
 
+  const handleAddEdit = (id) => {
+    setId(id);
+    setIsEmployeeOpen(true);
+  };
+
   return (
     <React.Fragment>
-      {isEmployeeOpen && <EmployeePopup handleShow={setIsEmployeeOpen}/>}
+      {isEmployeeOpen && <EmployeePopup handleShow={setIsEmployeeOpen} id={id} />}
 
       {isError ? console.log("Error raised when loading data!") :
         <table id="e-index-table">
@@ -42,7 +48,7 @@ const EmployeesList = () => {
             <tr className="e-action-row">
               <td colSpan="3" className="e-icon">
                 <div className="e-cicle e-add-person-cicle e-clickable"
-                  onClick={() => setIsEmployeeOpen(true)}>
+                  onClick={() => handleAddEdit()}>
                   <img id="e-add-person-icon" className="e-cicle" src={DimPlusIcon}/>
                   <span id="e-add-person-text">Add employee</span>
                 </div>
@@ -60,7 +66,7 @@ const EmployeesList = () => {
                 <td>{emp.role}</td>
                 <td></td>
                 <td className="e-data-cell">
-                  <EmployeesListActions />
+                  <EmployeesListActions handleEdit={() => handleAddEdit(emp.id)} />
                 </td>
               </tr>
             ))}
