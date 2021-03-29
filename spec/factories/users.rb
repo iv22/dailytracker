@@ -46,7 +46,7 @@ FactoryBot.define do
     password { Faker::Internet.password }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    confirmed_at { Time.now }
+    confirmed_at { Time.zone.now }
     phone { '+375294967365' }
     locked_at { nil }
 
@@ -63,7 +63,7 @@ FactoryBot.define do
     end
 
     trait :locked do
-      locked_at { Time.now }
+      locked_at { Time.zone.now }
     end
 
     factory :admin_user, traits: [:admin]

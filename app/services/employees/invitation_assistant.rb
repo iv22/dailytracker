@@ -10,9 +10,17 @@ module Employees
     end
 
     def call
-      if member.status == 'active'
-        { message: I18n.t('employees.invite.already_confirmed'), status: :not_acceptable }
-      elsif member.resend_confirmation_instructions
+      if member.status == 'invited'
+        resend_invitation
+      else
+        { message: I18n.t("employees.invite.#{member.status}"), status: :not_acceptable }
+      end
+    end
+
+    private
+
+    def resend_invitation
+      if member.resend_confirmation_instructions
         { message: I18n.t('employees.invite.resended'), status: :accepted }
       else
         { message: I18n.t('employees.invite.rejected'), status: :not_acceptable }

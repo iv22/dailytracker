@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Employees
-  # Check current User credentials
+  # Check current User role
   class UserPolicy < ApplicationPolicy
-    include Credentials
+    include PermissionChecker
 
     def index?
       manager?

@@ -2,7 +2,7 @@
 
 module Employees
   class InvitationPolicy < ApplicationPolicy
-    include Credentials
+    include PermissionChecker
 
     def create?
       manager_for?(record)

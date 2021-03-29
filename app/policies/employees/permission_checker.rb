@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Employees
-  module Credentials
+  module PermissionChecker
     private
 
     def manager?
