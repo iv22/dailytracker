@@ -62,6 +62,10 @@ FactoryBot.define do
       role { 2 }
     end
 
+    trait :invited do
+      confirmed_at { nil }
+    end
+
     trait :locked do
       locked_at { Time.zone.now }
     end
