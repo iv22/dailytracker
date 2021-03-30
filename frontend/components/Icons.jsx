@@ -8,6 +8,9 @@ import EditRedIcon from './Images/edit_red.svg';
 import LockIcon from './Images/lock.svg';
 import LockRedIcon from './Images/lock_red.svg';
 import UploadDropzoneIcon from './Images/upload_dropzone.svg';
+import ActiveIcon from './Images/active.svg';
+import InvitedIcon from './Images/invited.svg';
+import LockedIcon from './Images/locked.svg';
 
 export {
   PersonIcon,
@@ -19,5 +22,8 @@ export {
   EditRedIcon,
   LockIcon,
   LockRedIcon,
-  UploadDropzoneIcon
+  UploadDropzoneIcon,
+  ActiveIcon,
+  InvitedIcon,
+  LockedIcon
 };
