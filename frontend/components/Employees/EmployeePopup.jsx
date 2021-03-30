@@ -41,11 +41,11 @@ const EmployeePopup = (props) => {
 
   const createUser = (data) => {
     console.log('createUser');
-    console.log(data);
   }
 
   const updateUser = (id, data) => {
     const fetchData = async () => {
+      setIsError(false);
       try {
         const token = document.querySelector('[name=csrf-token]').content
         axios.defaults.headers.common['X-CSRF-TOKEN'] = token
@@ -67,6 +67,7 @@ const EmployeePopup = (props) => {
   useEffect(() => {
     if (isEdit) {
       const fetchData = async () => {
+        setIsError(false);
         try {
           const result = await axios("employees/" + id);
           if (result.data != null) {
@@ -89,6 +90,7 @@ const EmployeePopup = (props) => {
       <div className="modal-edit right">
         <form name="member" onSubmit={handleSubmit(handleOnSubmit)} >
           <p className="modal-title">{isEdit ? "Edit " : "Add "}Employee</p>
+          {isError && <div class="alert alert-danger" role="alert">Alert!</div>}
           <div className="flex-outer">
             <div>
               <label htmlFor="e-employee-email" className="modal-caption">Email:</label>
