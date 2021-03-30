@@ -45,7 +45,23 @@ const EmployeePopup = (props) => {
   }
 
   const updateUser = (id, data) => {
-    console.log('updateUser: ' + id);
+    const fetchData = async () => {
+      try {
+        const token = document.querySelector('[name=csrf-token]').content
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+        const result = await axios.put("employees/" + id, {member: data});
+        if (result.data != null) {
+          console.log(result.data);
+          props.handleShow(false);
+        } else {
+          setIsError(true);
+        }
+      } catch (error) {
+        setIsError(true);
+        console.log(error);
+      }
+    }
+    fetchData();
   }
 
   useEffect(() => {
