@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ModalButtons = (props) => {
+const ModalButtons = ({cancel}) => {
   return (
     <div id="modal-buttons">
       <button type="submit" className="right-button e-clickable submit-color" >SAVE</button>
-      <button type="button" className="right-button e-clickable cancel-color" onClick={props.cancel}>CANCEL</button>
+      <button type="button" className="right-button e-clickable cancel-color" onClick={cancel}>CANCEL</button>
     </div>
   )
 }

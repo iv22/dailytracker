@@ -45,9 +45,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
     const fetchData = async () => {
       setIsError(false);
       try {
-        const token = document.querySelector('[name=csrf-token]').content
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = token
-        const result = await axios.put("employees/" + id, {member: data});
+        const result = await axios.put(`employees/${id}`, {member: data});
         if (result.data) {
           console.log(result.data);
           handleShow(false);
@@ -68,7 +66,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
       const fetchData = async () => {
         setIsError(false);
         try {
-          const result = await axios("employees/" + id);
+          const result = await axios(`employees/${id}`);
           if (result.data) {
             const fields = ["email", "first_name", "last_name", "role", "phone"];
             fields.forEach(field => setValue(field, result.data[field]));
@@ -88,7 +86,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
       <div className="modal-edit right">
         <form name="member" onSubmit={handleSubmit(handleOnSubmit)} >
           <p className="modal-title">{isEdit ? "Edit " : "Add "}Employee</p>
-          {isError && <div class="alert alert-danger" role="alert">Alert!</div>}
+          {isError && <div className="alert alert-danger" role="alert">Alert!</div>}
           <div className="flex-outer">
             <div>
               <label htmlFor="e-employee-email" className="modal-caption">Email:</label>
