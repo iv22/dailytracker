@@ -5,10 +5,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const EmployeePopup = (props) => {
-  const id = props.id;
+const EmployeePopup = ({id, handleShow}) => {
   const isEdit = Boolean(id);
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [isError, setIsError] = useState(false);
 
   // form validation rules
@@ -35,7 +34,7 @@ const EmployeePopup = (props) => {
 
   const handleOnClose = (e) => {
     if (e.target.id == "e-employee") {
-      props.handleShow(false);
+      handleShow(false);
     }
   }
 
@@ -50,9 +49,9 @@ const EmployeePopup = (props) => {
         const token = document.querySelector('[name=csrf-token]').content
         axios.defaults.headers.common['X-CSRF-TOKEN'] = token
         const result = await axios.put("employees/" + id, {member: data});
-        if (result.data != null) {
+        if (result.data) {
           console.log(result.data);
-          props.handleShow(false);
+          handleShow(false);
         } else {
           setIsError(true);
         }
@@ -70,10 +69,10 @@ const EmployeePopup = (props) => {
         setIsError(false);
         try {
           const result = await axios("employees/" + id);
-          if (result.data != null) {
+          if (result.data) {
             const fields = ["email", "first_name", "last_name", "role", "phone"];
             fields.forEach(field => setValue(field, result.data[field]));
-            setUser(result.data);
+            // setUser(result.data);
           } else {
             setIsError(true);
           }
@@ -121,7 +120,7 @@ const EmployeePopup = (props) => {
               <input type="tel" id="e-employee-phone" name="phone" ref={register} className="modal-input" />
             </div>
           </div>
-          <ModalButtons cancel={() => props.handleShow(false)} />
+          <ModalButtons cancel={() => handleShow(false)} />
         </form>
       </div>
     </div>

@@ -1,17 +1,17 @@
 import React from 'react';
 
-const EmployeesUpload = (props) => {
+const EmployeesUpload = ({handleShow}) => {
 
   const handleFormClose = (e) => {
     if (e.target.id == "e-upload") {
-      props.handleShow(false);
+      handleShow(false);
     }
   }
 
   return (
     <div id="e-upload" className="modal smooth" onClick={handleFormClose}>
       <div id="e-upload-form" className="modal-upload smooth">
-        <span className="close" onClick={() => props.handleShow(false)}>
+        <span className="close" onClick={() => handleShow(false)}>
           &times;
         </span>
         <div className="e-upload-dropzone"></div>

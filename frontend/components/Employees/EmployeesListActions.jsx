@@ -1,7 +1,7 @@
 import React from 'react';
 import { SendIcon, SendRedIcon, EditIcon, EditRedIcon, LockIcon, LockRedIcon } from 'components/Icons';
 
-const EmployeesListActions = (props) => {
+const EmployeesListActions = ({handleEdit}) => {
   return (
     <React.Fragment>
       <img className="e-action e-clickable-icon" src={SendIcon} title="Resend invitation"
@@ -10,7 +10,7 @@ const EmployeesListActions = (props) => {
       <img className="e-action e-clickable-icon" src={EditIcon} title="Edit"
         onMouseOver={(e) => {e.target.src = EditRedIcon}}
         onMouseOut={(e) => {e.target.src = EditIcon}}
-        onClick={props.handleEdit} />
+        onClick={handleEdit} />
       <img className="e-action e-clickable-icon" src={LockIcon} title="Lock"
         onMouseOver={(e) => {e.target.src = LockRedIcon}}
         onMouseOut={(e) => {e.target.src = LockIcon}} />

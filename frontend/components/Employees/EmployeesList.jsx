@@ -15,7 +15,7 @@ const EmployeesList = () => {
     const fetchData = async () => {
       try {
         const result = await axios("employees");
-        result.data != null ? setEmployees(result.data) : setIsError(true);
+        result.data ? setEmployees(result.data) : setIsError(true);
       } catch (error) {
         setIsError(true);
       }
@@ -48,7 +48,7 @@ const EmployeesList = () => {
 
   return (
     <React.Fragment>
-      {isEmployeeOpen && <EmployeePopup handleShow={setIsEmployeeOpen} id={id} />}
+      {isEmployeeOpen && <EmployeePopup id={id} handleShow={setIsEmployeeOpen} />}
 
       {isError ? console.log("Error raised when loading data!") :
         <table id="e-index-table">
