@@ -10,6 +10,7 @@ const EmployeesList = () => {
   const [isEmployeeOpen, setIsEmployeeOpen] = useState(false);
   const [isError, setIsError] = useState(false);
   const [id, setId] = useState();
+  const [updatedAt, setUpdatedAt] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +22,7 @@ const EmployeesList = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [updatedAt]);
 
   const handleAddEdit = (id) => {
     setId(id);
@@ -48,7 +49,7 @@ const EmployeesList = () => {
 
   return (
     <React.Fragment>
-      {isEmployeeOpen && <EmployeePopup id={id} handleShow={setIsEmployeeOpen} />}
+      {isEmployeeOpen && <EmployeePopup id={id} handleShow={setIsEmployeeOpen} updatedAt={setUpdatedAt} />}
 
       {isError ? console.log("Error raised when loading data!") :
         <table id="e-index-table">

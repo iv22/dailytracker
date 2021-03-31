@@ -5,9 +5,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const EmployeePopup = ({id, handleShow}) => {
+const EmployeePopup = ({id, handleShow, updatedAt}) => {
   const isEdit = Boolean(id);
-  // const [user, setUser] = useState({});
   const [isError, setIsError] = useState(false);
 
   // form validation rules
@@ -52,6 +51,7 @@ const EmployeePopup = ({id, handleShow}) => {
         if (result.data) {
           console.log(result.data);
           handleShow(false);
+          updatedAt(Date.now);
         } else {
           setIsError(true);
         }
@@ -72,7 +72,6 @@ const EmployeePopup = ({id, handleShow}) => {
           if (result.data) {
             const fields = ["email", "first_name", "last_name", "role", "phone"];
             fields.forEach(field => setValue(field, result.data[field]));
-            // setUser(result.data);
           } else {
             setIsError(true);
           }
