@@ -3,7 +3,11 @@
 module Api
   module V1
     # Employees API controller
-    class EmployeesController < UserController
+    class EmployeesController < ApplicationController
+      include EmployeeUtils
+
+      before_action :authenticate_user!
+
       def index
         authorize! Object, with: Employees::UserPolicy
         @members = company.members.map(&:decorate)
@@ -48,6 +52,12 @@ module Api
           answer = Employees::UploadingAssistant.call(attachment, company)
           render json: { message: answer[:message] }, status: answer[:status]
         end
+      end
+
+      private
+
+      def member_params
+        @member_params ||= Employees::MemberParams.call(params)
       end
     end
   end
