@@ -8,17 +8,18 @@ import { ActiveIcon, InvitedIcon, LockedIcon } from 'components/Icons';
 const EmployeesList = () => {
   const [employees, setEmployees] = useState([]);
   const [isEmployeeOpen, setIsEmployeeOpen] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState();
   const [id, setId] = useState();
   const [updatedAt, setUpdatedAt] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
+      setError();
       try {
         const result = await axios("employees");
-        result.data ? setEmployees(result.data) : setIsError(true);
+        setEmployees(result.data);
       } catch (error) {
-        setIsError(true);
+        setError(error);
       }
     };
     fetchData();
@@ -51,7 +52,7 @@ const EmployeesList = () => {
     <React.Fragment>
       {isEmployeeOpen && <EmployeePopup id={id} handleShow={setIsEmployeeOpen} updatedAt={setUpdatedAt} />}
 
-      {isError ? console.log("Error raised when loading data!") :
+      {error ? <div className="alert alert-danger" role="alert">{error}</div> :
         <table id="e-index-table">
           <thead id="e-index-head">
             <tr>
@@ -74,7 +75,7 @@ const EmployeesList = () => {
                 </div>
               </td>
             </tr>
-            {employees.map((emp) => (
+            {employees && employees.map((emp) => (
               <tr className="e-index-row" key={emp.id}>
                 <td className="e-icon">
                   <div className="e-cicle e-person-cicle"></div>

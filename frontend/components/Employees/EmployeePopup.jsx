@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 
 const EmployeePopup = ({id, handleShow, updatedAt}) => {
   const isEdit = Boolean(id);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState();
 
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -38,24 +38,36 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
   }
 
   const createUser = (data) => {
-    console.log('createUser');
+    const fetchData = async () => {
+      setError();
+      try {
+        const result = await axios.post(`employees`, {member: data});
+        if (result.data) {
+          handleShow(false);
+          updatedAt(Date.now);
+        } else {
+          setError("Error adding Employee");
+        }
+      } catch (error) {
+        setError("Error adding Employee");
+      }
+    }
+    fetchData();
   }
 
   const updateUser = (id, data) => {
     const fetchData = async () => {
-      setIsError(false);
+      setError();
       try {
         const result = await axios.put(`employees/${id}`, {member: data});
         if (result.data) {
-          console.log(result.data);
           handleShow(false);
           updatedAt(Date.now);
         } else {
-          setIsError(true);
+          setError("Error updating Employee");
         }
       } catch (error) {
-        setIsError(true);
-        console.log(error);
+        setError("Error updating Employee");
       }
     }
     fetchData();
@@ -64,17 +76,17 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
   useEffect(() => {
     if (isEdit) {
       const fetchData = async () => {
-        setIsError(false);
+        setError();
         try {
           const result = await axios(`employees/${id}`);
           if (result.data) {
             const fields = ["email", "first_name", "last_name", "role", "phone"];
             fields.forEach(field => setValue(field, result.data[field]));
           } else {
-            setIsError(true);
+            setError("Error getting Employee data");
           }
         } catch (error) {
-          setIsError(true);
+          setError(error);
         }
       };
       fetchData();
@@ -86,7 +98,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
       <div className="modal-edit right">
         <form name="member" onSubmit={handleSubmit(handleOnSubmit)} >
           <p className="modal-title">{isEdit ? "Edit " : "Add "}Employee</p>
-          {isError && <div className="alert alert-danger" role="alert">Alert!</div>}
+          {error && <div className="alert alert-danger" role="alert">{error}</div>}
           <div className="flex-outer">
             <div>
               <label htmlFor="e-employee-email" className="modal-caption">Email:</label>

@@ -1,3 +1,5 @@
+@import 'global';
+
 #e-parent {
 	grid-area: article;
 	position: relative;
@@ -256,7 +258,7 @@ td.e-icon .e-person-cicle {
 }
 
 .flex-outer div > label {
-  flex: 0 1 140px;
+  flex: 0 1 120px;
   min-width: 120px;
 }
 

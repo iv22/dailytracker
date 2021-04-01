@@ -2,8 +2,8 @@ import axios from "axios";
 
 let token = document.querySelector('[name=csrf-token]');
 if (token) {
-  token = token.content
-};
+  token = token.content;
+}
 axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 
 export default axios.create({
