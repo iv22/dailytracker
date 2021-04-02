@@ -84,13 +84,14 @@ group :development do
   gem 'rubocop-rspec', '~> 2.2'
   # RubyCritic is a tool that wraps around various static analysis gems
   gem 'rubycritic', '~> 4.6'
+  # sass linter
+  gem 'scss_lint', '= 0.59.0', require: false
   # Spring speeds up development by keeping your application
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Access an interactive console on exception pages
   # or by calling 'console' anywhere in the code
   gem 'web-console', '>= 3.3.0'
-  gem 'scss_lint', require: false
 end
 
 group :test do
