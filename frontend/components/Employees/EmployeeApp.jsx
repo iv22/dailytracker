@@ -12,10 +12,10 @@ const EmployeeApp = () => {
         <h3 className="all-names">All Employees</h3>
       </nav>
 
-      <div id="e-parent">
-        <div id="e-color-layer" className="smooth"></div>
-        <span id="e-title">All employees</span>
-        <button id="e-upload-button" type="button" className="smooth-button e-clickable submit-color"
+      <div className="e-parent">
+        <div className="smooth e-color-layer"></div>
+        <span className="e-title">All&nbsp;employees</span>
+        <button type="button" className="smooth-button e-clickable submit-color e-upload-button"
           onClick={() => setIsUploadOpen(true)}>
           <div className="btn-icon"></div>
           Upload
@@ -24,8 +24,8 @@ const EmployeeApp = () => {
         {isUploadOpen && <EmployeesUpload handleShow={setIsUploadOpen}/>}
         <EmployeesList />
 
-        <div id="e-htop-line"></div>
-        <div id="e-hbottom-line"></div>
+        <div className="e-htop-line"></div>
+        <div className="e-hbottom-line"></div>
       </div>
     </section>
   )

@@ -23,6 +23,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "sass-lint-auto-fix": "^0.21.2",
     "webpack-dev-server": "^3.11.2"
   }
 }

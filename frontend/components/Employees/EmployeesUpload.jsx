@@ -10,12 +10,12 @@ const EmployeesUpload = ({handleShow}) => {
 
   return (
     <div id="e-upload" className="modal smooth" onClick={handleFormClose}>
-      <div id="e-upload-form" className="modal-upload smooth">
+      <div className="modal-upload smooth e-upload-form">
         <span className="close" onClick={() => handleShow(false)}>
           &times;
         </span>
         <div className="e-upload-dropzone"></div>
-        <div id="e-upload-text">
+        <div className="e-upload-text">
           Drag &amp; drop files here
           <br />
           or
