@@ -522,7 +522,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.9, >= 2.9.1)
   rubocop-rspec (~> 2.2)
   rubycritic (~> 4.6)
-  scss_lint
+  scss_lint (= 0.59.0)
   shoulda-matchers (~> 4.5, >= 4.5.1)
   simple_form (~> 5.1.0)
   slim-rails (~> 3.2.0)
