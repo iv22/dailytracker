@@ -4,3 +4,6 @@ rubocop:
 
 jshint:
   config_file: .jshintrc
+
+scss:
+  version: 0.57.1

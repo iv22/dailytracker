@@ -21,7 +21,7 @@ const Header = () => {
           </li>
           <img className="vector-2" src={personBig} alt="person_big" />
           <li className="nav-employees">
-            <Link to="/employee">Employees</Link>
+            <Link to="/employees">Employees</Link>
             <img className="background-1" src={circleBig} alt="circle_big" />
             <img className="vector-5" src={plus} alt="plus" />
           </li>
