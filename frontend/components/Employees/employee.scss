@@ -139,7 +139,6 @@
   top: 60px;
 
   .btn-icon {
-    background: url('../Images/upload.svg') no-repeat;
     height: 16px;
     left: 12px;
     position: absolute;
@@ -204,12 +203,13 @@
 }
 
 .e-upload-dropzone {
-  background: url('../Images/upload_dropzone.svg') no-repeat;
   background-size: 64px;
   height: 64px;
+  left: 50%;
   margin: auto;
   position: relative;
   top: 20%;
+  transform: translate(-50%);
   width: 64px;
 }
 
