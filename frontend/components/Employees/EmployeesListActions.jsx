@@ -1,19 +1,36 @@
-import React from 'react';
-import { SendIcon, SendRedIcon, EditIcon, EditRedIcon, LockIcon, LockRedIcon } from 'components/Icons';
+import React, {useState} from 'react';
+import { SendIcon, EditIcon, LockIcon } from 'components/Icons';
 
 const EmployeesListActions = ({handleEdit}) => {
+  const [isHover, setIsHover] = useState({});
+  const icons = {
+    send: SendIcon,
+    edit: EditIcon,
+    lock: LockIcon
+  };
+
+  const setHover = (component, value) => {
+    setIsHover(prevState => ({...prevState, [component]: value}));
+  }
+
+  const getIconComponent = (name) => {
+    const Icon = icons[name];
+    return <Icon stroke={isHover[name] ? "red" : "none"}
+      onMouseEnter={() => setHover(name, true)}
+      onMouseLeave={() => setHover(name, false)} />
+  }
+
   return (
     <React.Fragment>
-      <img className="e-action e-clickable-icon" src={SendIcon} title="Resend invitation"
-        onMouseOver={(e) => {e.target.src = SendRedIcon}}
-        onMouseOut={(e) => {e.target.src = SendIcon}} />
-      <img className="e-action e-clickable-icon" src={EditIcon} title="Edit"
-        onMouseOver={(e) => {e.target.src = EditRedIcon}}
-        onMouseOut={(e) => {e.target.src = EditIcon}}
-        onClick={handleEdit} />
-      <img className="e-action e-clickable-icon" src={LockIcon} title="Lock"
-        onMouseOver={(e) => {e.target.src = LockRedIcon}}
-        onMouseOut={(e) => {e.target.src = LockIcon}} />
+      <div className="e-action e-clickable-icon" title="Resend invitation">
+        {getIconComponent('send')}
+      </div>
+      <div className="e-action e-clickable-icon" title="Edit" onClick={handleEdit}>
+        {getIconComponent('edit')}
+      </div>
+      <div className="e-action e-clickable-icon" title="Lock">
+        {getIconComponent('lock')}
+      </div>
     </React.Fragment>
   )
 }

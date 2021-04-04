@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import EmployeesList from "components/Employees/EmployeesList";
 import EmployeesUpload from "components/Employees/EmployeesUpload";
 import "./employee.scss";
+import { UploadIcon } from 'components/Icons';
 
 const EmployeeApp = () => {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
@@ -17,7 +18,7 @@ const EmployeeApp = () => {
         <span className="e-title">All&nbsp;employees</span>
         <button type="button" className="smooth-button e-clickable submit-color e-upload-button"
           onClick={() => setIsUploadOpen(true)}>
-          <div className="btn-icon"></div>
+          <UploadIcon className="btn-icon" />
           Upload
         </button>
 
