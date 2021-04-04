@@ -9,8 +9,8 @@ RSpec.describe Employees::InvitationAssistant, type: :controller do
       @response = Employees::InvitationAssistant.call(member)
     end
 
-    it "shouldn't accept operation" do
-      expect(@response).to eq({ message: I18n.t("employees.invite.active"), status: :not_acceptable })
+    it 'shouldn`t accept operation' do
+      expect(@response).to eq({ message: I18n.t('employees.invite.active'), status: :not_acceptable })
     end
   end
 
@@ -20,8 +20,8 @@ RSpec.describe Employees::InvitationAssistant, type: :controller do
       @response = Employees::InvitationAssistant.call(member)
     end
 
-    it "shouldn't accept operation" do
-      expect(@response).to eq({ message: I18n.t("employees.invite.locked"), status: :not_acceptable })
+    it 'shouldn`t accept operation' do
+      expect(@response).to eq({ message: I18n.t('employees.invite.locked'), status: :not_acceptable })
     end
   end
 
@@ -31,8 +31,8 @@ RSpec.describe Employees::InvitationAssistant, type: :controller do
       @response = Employees::InvitationAssistant.call(member)
     end
 
-    it "should accept operation" do
-      expect(@response).to eq({ message: I18n.t("employees.invite.resended"), status: :accepted })
+    it 'should accept operation' do
+      expect(@response).to eq({ message: I18n.t('employees.invite.resended'), status: :accepted })
     end
   end
 end

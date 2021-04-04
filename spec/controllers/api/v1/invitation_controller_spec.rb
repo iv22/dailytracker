@@ -13,7 +13,8 @@ RSpec.describe Api::V1::InvitationController, type: :controller do
 
   context 'when User is Signed-in as a Manager' do
     before do
-      Employees::InvitationAssistant.any_instance.stub(:call).and_return({message: 'invite_stub', status: :ok})
+      expect_any_instance_of(Employees::InvitationAssistant).to receive(:call).
+        and_return({message: 'invite_stub', status: :ok})
       sign_in(manager, scope: :user)
       post :create, format: :json, params: params
     end

@@ -3,9 +3,7 @@
 module Api
   module V1
     class InvitationController < ApplicationController
-      include EmployeeUtils
-
-      before_action :authenticate_user!
+      include Api
 
       def create
         authorize! member, with: Employees::InvitationPolicy

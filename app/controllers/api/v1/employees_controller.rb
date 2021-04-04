@@ -4,9 +4,7 @@ module Api
   module V1
     # Employees API controller
     class EmployeesController < ApplicationController
-      include EmployeeUtils
-
-      before_action :authenticate_user!
+      include Api
 
       def index
         authorize! Object, with: Employees::UserPolicy
@@ -22,9 +20,7 @@ module Api
       def create
         authorize! Object, with: Employees::UserPolicy
         invited_member = Employees::MemberCreator.call(member_params, company).decorate
-        render json: invited_member,
-               serializer: UserSerializer,
-               status: :created,
+        render json: invited_member, serializer: UserSerializer, status: :created,
                location: api_v1_employee_path(invited_member)
       end
 

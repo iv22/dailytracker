@@ -6,11 +6,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
-  rescue_from ActionPolicy::Unauthorized, with: :handle_unauthorized
-  rescue_from ArgumentError, with: :params_invalid
-
   def authenticate_active_admin_user!
     authenticate_user!
     return if current_user.role == 'admin'
@@ -40,9 +35,5 @@ class ApplicationController < ActionController::Base
 
   def no_content_response
     respond_to { |format| format.json { head :no_content } }
-  end
-
-  def params_invalid(error)
-    render json: { error: error.message }, status: :unprocessable_entity
   end
 end
