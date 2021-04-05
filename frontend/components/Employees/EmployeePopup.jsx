@@ -94,7 +94,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
   }, []);
 
   return (
-    <div id="e-employee" className="modal smooth" onClick={handleOnClose} >
+    <div id="e-employee" className="modal-layer smooth" onClick={handleOnClose} >
       <div className="modal-edit right">
         <form name="member" onSubmit={handleSubmit(handleOnSubmit)} >
           <p className="modal-title">{isEdit ? "Edit " : "Add "}Employee</p>
