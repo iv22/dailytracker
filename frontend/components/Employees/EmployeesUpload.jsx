@@ -9,7 +9,7 @@ const EmployeesUpload = ({handleShow}) => {
   }
 
   return (
-    <div id="e-upload" className="modal smooth" onClick={handleFormClose}>
+    <div id="e-upload" className="modal-layer smooth" onClick={handleFormClose}>
       <div className="modal-upload smooth e-upload-form">
         <span className="close" onClick={() => handleShow(false)}>
           &times;
