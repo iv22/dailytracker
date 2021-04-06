@@ -23,7 +23,7 @@ const EmployeeApp = () => {
         </button>
 
         {isUploadOpen && <EmployeesUpload handleShow={setIsUploadOpen}/>}
-        <EmployeesList className="tmp" />
+        <EmployeesList />
 
         <div className="e-htop-line"></div>
         <div className="e-hbottom-line"></div>
