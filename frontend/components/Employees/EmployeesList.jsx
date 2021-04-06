@@ -60,9 +60,9 @@ const EmployeesList = () => {
           <tbody className="e-index-body">
             <tr className="e-action-row">
               <td colSpan="3" className="e-icon">
-                <div className="e-cicle e-add-person-cicle e-clickable"
+                <div className="e-circle e-add-person-circle e-clickable"
                   onClick={() => handleAddEdit()}>
-                  <DimPlusIcon className="e-cicle e-add-person-icon" />
+                  <DimPlusIcon className="e-circle e-add-person-icon" />
                   <span className="e-add-person-text">Add&nbsp;employee</span>
                 </div>
               </td>
@@ -70,7 +70,7 @@ const EmployeesList = () => {
             {employees && employees.map((emp) => (
               <tr className="e-index-row" key={emp.id}>
                 <td className="e-icon">
-                  <div className="e-cicle e-person-cicle"></div>
+                  <div className="e-circle e-person-circle"></div>
                   <PersonIcon className="e-person-icon" />
                 </td>
                 <td>{emp.first_name + ' ' + emp.last_name}</td>

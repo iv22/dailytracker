@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SeparateTeam from 'components/Teams/SeparateTeam';
-import ball from 'components/Images/ball.svg';
-import person from 'components/Images/person.svg';
-import rubbish from 'components/Images/rubbish.svg';
-import dullCircle from 'components/Images/dull_circle.svg';
-import dimPlus from 'components/Images/dim_plus.svg';
+import Ball from 'components/Images/ball.svg';
+import Person from 'components/Images/person.svg';
+import Rubbish from 'components/Images/rubbish.svg';
+import DullCircle from 'components/Images/dull_circle.svg';
+import DimPlus from 'components/Images/dim_plus.svg';
 
 const TeamApp = () => {
   const [teams, setTeams] = useState([]);
@@ -21,8 +21,12 @@ const TeamApp = () => {
       <nav className="nav">
         <h3 className="all-names">All teams</h3>
         <span>
-          <img className="vector-7" src={ball} alt="ball" />
-          <img className="vector-8" src={person} alt="person" />
+          <div className="vector-7" alt="ball">
+            <Ball />
+          </div>
+          <div className="vector-8" alt="person">
+            <Person />
+          </div>
         </span>
       </nav>
       <article className="article-teams">
@@ -38,16 +42,26 @@ const TeamApp = () => {
                 <tr className="team-body" key={team.id}>
                   <td className="team-name" onClick={() => setActiveTeam(team)}>
                     {team.name}
-                    <img className="vector-9" src={ball} alt="ball" />
-                    <img className="vector-10" src={person} alt="person" />
-                    <img className="vector-13" src={rubbish} alt="rubbish" />
+                    <div className="vector-9" alt="ball">
+                      <Ball />
+                    </div>
+                    <div className="vector-10" alt="person">
+                      <Person />
+                    </div>
+                    <div className="vector-13" alt="rubbish">
+                      <Rubbish />
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <img className="vector-11" src={dullCircle} alt="dull_circle" />
-          <img className="vector-12" src={dimPlus} alt="dim_plus" />
+          <div className="vector-11" alt="dull_circle">
+            <DullCircle />
+          </div>
+          <div className="vector-12" alt="dim_plus">
+            <DimPlus />
+          </div>
         </aside>
         <footer className="team-members">
           {activeTeam ? (

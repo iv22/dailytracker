@@ -78,7 +78,7 @@
   position: relative;
 }
 
-.e-cicle {
+.e-circle {
   border-bottom-left-radius: 999px;
   border-bottom-right-radius: 999px;
   border-top-left-radius: 999px;
@@ -88,12 +88,12 @@
   width: 40px;
 }
 
-.e-person-cicle {
+.e-person-circle {
   border: 1px solid var(--text-color);
   opacity: .3799999952316284;
 }
 
-.e-add-person-cicle {
+.e-add-person-circle {
   background-color: var(--submit-light);
 }
 
@@ -106,8 +106,8 @@
   cursor: pointer;
 }
 
-.e-icon .e-add-person-cicle,
-.e-icon .e-person-cicle {
+.e-icon .e-add-person-circle,
+.e-icon .e-person-circle {
   left: 0;
   top: 0;
 }

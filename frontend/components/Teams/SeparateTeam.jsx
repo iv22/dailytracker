@@ -1,10 +1,10 @@
 import React from 'react';
-import threeDots from 'components/Images/three_dots.svg';
-import circleSmall from 'components/Images/circle_small.svg';
-import plus from 'components/Images/plus.svg';
-import ball from 'components/Images/ball.svg';
-import person from 'components/Images/person.svg';
-import rubbish from 'components/Images/rubbish.svg';
+import ThreeDots from 'components/Images/three_dots.svg';
+import CircleSmall from 'components/Images/circle_small.svg';
+import Plus from 'components/Images/plus.svg';
+import Ball from 'components/Images/ball.svg';
+import Person from 'components/Images/person.svg';
+import Rubbish from 'components/Images/rubbish.svg';
 
 const SeparateTeam = ({activeTeam}) => {
   return (
@@ -12,15 +12,22 @@ const SeparateTeam = ({activeTeam}) => {
       <nav className="team-nav">
         <h3 className="name-team">{activeTeam.name}</h3>
         <span>
-          <img className="vector-14" src={threeDots} alt="three_dots" />
+          <div className="vector-14" alt="three_dots">
+            <ThreeDots />
+          </div>
         </span>
       </nav>
       <table width="33%" cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
             <th className="team_user-head">Team Members</th>
-            <td><img className="vector-15" src={circleSmall} alt="circle_small" />
-              <img className="vector-16" src={plus} alt="plus" />
+            <td>
+              <div className="vector-15" alt="circle_small">
+                <CircleSmall />
+              </div>
+              <div className="vector-16" alt="plus">
+                <Plus />
+              </div>
             </td>
           </tr>
         </thead>
@@ -29,9 +36,15 @@ const SeparateTeam = ({activeTeam}) => {
             <tr className="team_user-body" key={team_user.id}>
               <td className="team_user-name">
                 {team_user.name}
-                <img className="vector-17" src={ball} alt="ball" />
-                <img className="vector-18" src={person} alt="person" />
-                <img className="vector-19" src={rubbish} alt="rubbish" />
+                <div className="vector-17" alt="ball">
+                  <Ball />
+                </div>
+                <div className="vector-18" alt="person">
+                  <Person />
+                </div>
+                <div className="vector-19" alt="rubbish">
+                  <Rubbish />
+                </div>
               </td>
             </tr>
           ))}

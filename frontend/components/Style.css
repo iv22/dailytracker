@@ -78,20 +78,20 @@
 
 .background-1 {
   position: absolute;
-  margin-top: -23px;
-  margin-left: 25px;
+  top: -23px;
+  right: 5px;
 }
 
 .background-2 {
   position: absolute;
-  margin-top: -23px;
-  margin-left: 70px;
+  top: -23px;
+  right: 5px;
 }
 
 .vector-5 {
   position: absolute;
-  right: 86px;
-  top: calc(50% - 14px/2);
+  right: 35px;
+  top: calc(50% - 16px);
 }
 
 .nav-teams {
