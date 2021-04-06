@@ -193,7 +193,7 @@
   width: 26px;
 
   :hover {
-    stroke: red;
+    stroke: var(--action-color);
   }
 }
 
@@ -244,16 +244,19 @@
   margin: 200px auto;
   padding: 20px;
   position: relative;
-  width: 500px;
+  width: 540px;
 }
 
 .flex-outer {
   margin-top: 20px;
 
-  > div {
-    border-bottom: 1px solid var(--modal-underline-color);
+  div {
     display: flex;
     height: 38px;
+  }
+
+  > div {
+    border-bottom: 1px solid var(--modal-underline-color);
   }
 
   label {
