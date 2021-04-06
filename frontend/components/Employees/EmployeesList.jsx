@@ -42,7 +42,7 @@ const EmployeesList = () => {
 
   return (
     <React.Fragment>
-      {isEmployeeOpen && <EmployeePopup id={id} handleShow={setIsEmployeeOpen} updatedAt={setUpdatedAt} />}
+      {isEmployeeOpen && <EmployeePopup id={id} handleModalClose={() => setIsEmployeeOpen(false)} updatedAt={setUpdatedAt} />}
 
       {error ? <div className="alert alert-danger" role="alert">{error}</div> :
         <table className="e-index-table">

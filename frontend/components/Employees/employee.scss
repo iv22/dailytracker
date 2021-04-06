@@ -191,6 +191,10 @@
   margin: 2px;
   top: 0;
   width: 26px;
+
+  :hover {
+    stroke: red;
+  }
 }
 
 .e-upload-form button {

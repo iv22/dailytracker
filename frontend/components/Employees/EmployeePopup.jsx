@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const EmployeePopup = ({id, handleShow, updatedAt}) => {
+const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
   const isEdit = Boolean(id);
   const [error, setError] = useState();
 
@@ -33,7 +33,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
 
   const handleOnClose = (e) => {
     if (e.target.id == "e-employee") {
-      handleShow(false);
+      handleModalClose();
     }
   }
 
@@ -43,7 +43,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
       try {
         const result = await axios.post(`employees`, {member: data});
         if (result.data) {
-          handleShow(false);
+          handleModalClose();
           updatedAt(Date.now);
         } else {
           setError("Error adding Employee");
@@ -61,7 +61,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
       try {
         const result = await axios.put(`employees/${id}`, {member: data});
         if (result.data) {
-          handleShow(false);
+          handleModalClose();
           updatedAt(Date.now);
         } else {
           setError("Error updating Employee");
@@ -129,7 +129,7 @@ const EmployeePopup = ({id, handleShow, updatedAt}) => {
               <input type="tel" id="e-employee-phone" name="phone" ref={register} className="modal-input" />
             </div>
           </div>
-          <ModalButtons cancel={() => handleShow(false)} />
+          <ModalButtons handleModalClose={handleModalClose} />
         </form>
       </div>
     </div>
