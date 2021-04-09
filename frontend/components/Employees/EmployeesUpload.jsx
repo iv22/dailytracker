@@ -1,4 +1,5 @@
 import React from 'react';
+import { UploadDropzoneIcon } from 'components/Icons';
 
 const EmployeesUpload = ({handleShow}) => {
 
@@ -14,7 +15,7 @@ const EmployeesUpload = ({handleShow}) => {
         <span className="close" onClick={() => handleShow(false)}>
           &times;
         </span>
-        <div className="e-upload-dropzone"></div>
+        <UploadDropzoneIcon className="e-upload-dropzone" />
         <div className="e-upload-text">
           Drag &amp; drop files here
           <br />

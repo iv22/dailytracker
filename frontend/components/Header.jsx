@@ -1,37 +1,55 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import ellipse from 'components/Images/ellipse.svg';
-import squareModule from 'components/Images/square_module.svg';
-import personBig from 'components/Images/person_big.svg';
-import circleBig from 'components/Images/circle_big.svg';
-import plus from 'components/Images/plus.svg';
-import twoPersons from 'components/Images/two_persons.svg';
-import gear from 'components/Images/gear.svg';
+import Ellipse from 'components/Images/ellipse.svg';
+import SquareModule from 'components/Images/square_module.svg';
+import PersonBig from 'components/Images/person_big.svg';
+import CircleBig from 'components/Images/circle_big.svg';
+import Plus from 'components/Images/plus.svg';
+import TwoPersons from 'components/Images/two_persons.svg';
+import Gear from 'components/Images/gear.svg';
 
 const Header = () => {
   return (
     <header className="header">
-      <img className="ellipse" src={ellipse} alt="ellipse" />
+      <div className="ellipse" alt="ellipse">
+        <Ellipse />
+      </div>
       <h1 className="name-project">Daily Tracker</h1>
       <nav className="main-nav">
         <ul className="main-links">
-          <img className="vector-1" src={squareModule} alt="square_module" />
+          <div className="vector-1" alt="square_module">
+            <SquareModule />
+          </div>
           <li className="nav-dashboard">
             <Link to="/">Dashboard</Link>
           </li>
-          <img className="vector-2" src={personBig} alt="person_big" />
+          <div className="vector-2" alt="person_big">
+            <PersonBig />
+          </div>
           <li className="nav-employees">
             <Link to="/employees">Employees</Link>
-            <img className="background-1" src={circleBig} alt="circle_big" />
-            <img className="vector-5" src={plus} alt="plus" />
+            <div className="background-1" alt="circle_big">
+              <CircleBig />
+            </div>
+            <div className="vector-5" alt="plus">
+              <Plus />
+            </div>
           </li>
-          <img className="vector-3" src={twoPersons} alt="two_persons" />
+          <div className="vector-3" alt="two_persons">
+            <TwoPersons />
+          </div>
           <li className="nav-teams">
             <Link to="/teams">Teams</Link>
-            <img className="background-2" src={circleBig} alt="circle_big" />
-            <img className="vector-5" src={plus} alt="plus" />
+            <div className="background-2" alt="circle_big">
+              <CircleBig />
+            </div>
+            <div className="vector-5" alt="plus">
+              <Plus />
+            </div>
           </li>
-          <img className="vector-4" src={gear} alt="gear" />
+          <div className="vector-4" alt="gear">
+            <Gear />
+          </div>
           <li className="nav-settings">
             <Link to="/settings">Settings</Link>
           </li>

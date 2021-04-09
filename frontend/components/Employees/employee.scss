@@ -78,7 +78,7 @@
   position: relative;
 }
 
-.e-cicle {
+.e-circle {
   border-bottom-left-radius: 999px;
   border-bottom-right-radius: 999px;
   border-top-left-radius: 999px;
@@ -88,12 +88,12 @@
   width: 40px;
 }
 
-.e-person-cicle {
+.e-person-circle {
   border: 1px solid var(--text-color);
   opacity: .3799999952316284;
 }
 
-.e-add-person-cicle {
+.e-add-person-circle {
   background-color: var(--submit-light);
 }
 
@@ -106,8 +106,8 @@
   cursor: pointer;
 }
 
-.e-icon .e-add-person-cicle,
-.e-icon .e-person-cicle {
+.e-icon .e-add-person-circle,
+.e-icon .e-person-circle {
   left: 0;
   top: 0;
 }
@@ -139,7 +139,6 @@
   top: 60px;
 
   .btn-icon {
-    background: url('../Images/upload.svg') no-repeat;
     height: 16px;
     left: 12px;
     position: absolute;
@@ -192,6 +191,10 @@
   margin: 2px;
   top: 0;
   width: 26px;
+
+  :hover {
+    stroke: var(--action-color);
+  }
 }
 
 .e-upload-form button {
@@ -204,12 +207,13 @@
 }
 
 .e-upload-dropzone {
-  background: url('../Images/upload_dropzone.svg') no-repeat;
   background-size: 64px;
   height: 64px;
+  left: 50%;
   margin: auto;
   position: relative;
   top: 20%;
+  transform: translate(-50%);
   width: 64px;
 }
 
@@ -240,16 +244,19 @@
   margin: 200px auto;
   padding: 20px;
   position: relative;
-  width: 500px;
+  width: 540px;
 }
 
 .flex-outer {
   margin-top: 20px;
 
-  > div {
-    border-bottom: 1px solid var(--modal-underline-color);
+  div {
     display: flex;
     height: 38px;
+  }
+
+  > div {
+    border-bottom: 1px solid var(--modal-underline-color);
   }
 
   label {

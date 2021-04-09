@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import EmployeesListActions from 'components/Employees/EmployeesListActions';
 import EmployeePopup from 'components/Employees/EmployeePopup';
-import { PersonIcon, DimPlusIcon } from 'components/Icons';
 import axios from '../../init/api';
-import { ActiveIcon, InvitedIcon, LockedIcon } from 'components/Icons';
+import { PersonIcon, DimPlusIcon, ActiveIcon, InvitedIcon, LockedIcon } from 'components/Icons';
 
 const EmployeesList = () => {
   const [employees, setEmployees] = useState([]);
@@ -31,26 +30,19 @@ const EmployeesList = () => {
   };
 
   const getStatusIcon = (status) => {
-    let source = {};
     switch (status) {
       case "active":
-        source["icon"] = ActiveIcon;
-        source["title"] = "active";
-        break;
+        return <ActiveIcon title="active" />
       case "locked":
-        source["icon"] = LockedIcon;
-        source["title"] = "locked";
-        break;
+        return <LockedIcon title="locked" />
       case "Invited":
-        source["icon"] = InvitedIcon;
-        source["title"] = "invited";
+        return <InvitedIcon title="invited" />
     }
-    return <img src={source["icon"]} title={source["title"]} />
   }
 
   return (
     <React.Fragment>
-      {isEmployeeOpen && <EmployeePopup id={id} handleShow={setIsEmployeeOpen} updatedAt={setUpdatedAt} />}
+      {isEmployeeOpen && <EmployeePopup id={id} handleModalClose={() => setIsEmployeeOpen(false)} updatedAt={setUpdatedAt} />}
 
       {error ? <div className="alert alert-danger" role="alert">{error}</div> :
         <table className="e-index-table">
@@ -68,9 +60,9 @@ const EmployeesList = () => {
           <tbody className="e-index-body">
             <tr className="e-action-row">
               <td colSpan="3" className="e-icon">
-                <div className="e-cicle e-add-person-cicle e-clickable"
+                <div className="e-circle e-add-person-circle e-clickable"
                   onClick={() => handleAddEdit()}>
-                  <img className="e-cicle e-add-person-icon" src={DimPlusIcon}/>
+                  <DimPlusIcon className="e-circle e-add-person-icon" />
                   <span className="e-add-person-text">Add&nbsp;employee</span>
                 </div>
               </td>
@@ -78,8 +70,8 @@ const EmployeesList = () => {
             {employees && employees.map((emp) => (
               <tr className="e-index-row" key={emp.id}>
                 <td className="e-icon">
-                  <div className="e-cicle e-person-cicle"></div>
-                  <img className="e-person-icon" src={PersonIcon} />
+                  <div className="e-circle e-person-circle"></div>
+                  <PersonIcon className="e-person-icon" />
                 </td>
                 <td>{emp.first_name + ' ' + emp.last_name}</td>
                 <td>{emp.email}</td>
