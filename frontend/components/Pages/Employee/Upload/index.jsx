@@ -1,5 +1,5 @@
 import React from 'react';
-import { UploadDropzoneIcon } from 'components/Icons';
+import { UploadDropzoneIcon } from "components/General/Icons";
 
 const EmployeesUpload = ({handleShow}) => {
 

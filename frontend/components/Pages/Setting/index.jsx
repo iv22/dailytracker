@@ -1,12 +1,12 @@
 import React from 'react';
 
-const DashboardApp = () => {
+const Setting = () => {
   return (
     <section className="section">
     <nav className="nav">
-    <h3 className="all-names">Dashboard</h3>
+    <h3 className="all-names">Settings</h3>
     </nav>
     </section>
   )
 }
-export default DashboardApp
+export default Setting

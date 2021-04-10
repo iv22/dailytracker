@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ModalButtons from 'components/ModalButtons';
-import axios from '../../init/api';
+import ModalButtons from 'components/General/Modal/ButtonsBox';
+import axios from 'init/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
+const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
   const isEdit = Boolean(id);
   const [error, setError] = useState();
 
@@ -136,4 +136,4 @@ const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
   )
 }
 
-export default EmployeePopup;
+export default EmployeeAddEdit;

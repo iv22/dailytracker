@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import EmployeesList from "components/Employees/EmployeesList";
-import EmployeesUpload from "components/Employees/EmployeesUpload";
-import "./employee.scss";
-import { UploadIcon } from 'components/Icons';
+import EmployeesList from "./List";
+import EmployeesUpload from "./Upload";
+import "./style";
+import { UploadIcon } from "components/General/Icons";
 
-const EmployeeApp = () => {
+const Employee = () => {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
 
   return (
@@ -31,4 +31,4 @@ const EmployeeApp = () => {
     </section>
   )
 }
-export default EmployeeApp;
+export default Employee;

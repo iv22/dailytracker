@@ -1,5 +1,5 @@
 import React from 'react';
-import { SendIcon, EditIcon, LockIcon } from 'components/Icons';
+import { SendIcon, EditIcon, LockIcon } from "components/General/Icons";
 
 const EmployeesListActions = ({handleEdit}) => {
   return (

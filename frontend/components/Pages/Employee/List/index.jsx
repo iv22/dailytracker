@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import EmployeesListActions from 'components/Employees/EmployeesListActions';
-import EmployeePopup from 'components/Employees/EmployeePopup';
-import axios from '../../init/api';
-import { PersonIcon, DimPlusIcon, ActiveIcon, InvitedIcon, LockedIcon } from 'components/Icons';
+import EmployeesListActions from './Action';
+import EmployeeAddEdit from '../AddEdit';
+import axios from 'init/api';
+import { PersonIcon, DimPlusIcon, ActiveIcon, InvitedIcon, LockedIcon } from "components/General/Icons";
 
 const EmployeesList = () => {
   const [employees, setEmployees] = useState([]);
@@ -42,7 +42,7 @@ const EmployeesList = () => {
 
   return (
     <React.Fragment>
-      {isEmployeeOpen && <EmployeePopup id={id} handleModalClose={() => setIsEmployeeOpen(false)} updatedAt={setUpdatedAt} />}
+      {isEmployeeOpen && <EmployeeAddEdit id={id} handleModalClose={() => setIsEmployeeOpen(false)} updatedAt={setUpdatedAt} />}
 
       {error ? <div className="alert alert-danger" role="alert">{error}</div> :
         <table className="e-index-table">
