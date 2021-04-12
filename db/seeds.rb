@@ -25,6 +25,62 @@ teams = Team.create!([
   { name: "Opal", company: company }
 ])
 
-team_user = TeamUser.create!([
-  {user:user, team: teams[2], is_team_lead: false }
+users = User.create!([
+  {
+    email: 'or@mail.ru',
+    password: 'or7777',
+    first_name: "John",
+    last_name: "Smith",
+    role: 2,
+    phone: +375292582728
+  },
+  { 
+    email: 'on@mail.ru',
+    password: 'on7777',
+    first_name: "Michael",
+    last_name: "Norton",
+    role: 2,
+    phone: +375292582728
+  },
+  {
+    email: 'om@mail.ru',
+    password: 'om7777',
+    first_name: "Harry",
+    last_name: "Stapleton",
+    role: 2,
+    phone: +375292582728
+  },
+  {
+    email: 'ow@mail.ru',
+    password: 'ow7777',
+    first_name: "Mary",
+    last_name: "Green",
+    role: 2,
+    phone: +375292582728
+  },
+  {
+    email: 'os@mail.ru',
+    password: 'os7777',
+    first_name: "Dmitry",
+    last_name: "Novitsky",
+    role: 2,
+    phone: +375292582728
+  },
+  {
+    email: 'oh@mail.ru',
+    password: 'oh7777',
+    first_name: "Harry",
+    last_name: "Potter",
+    role: 2,
+    phone: +375292582728
+  }
+])
+
+team_users = TeamUser.create!([
+  { user: users[0], team: teams[0], is_team_lead: true },
+  { user: users[1], team: teams[0], is_team_lead: false },
+  { user: users[2], team: teams[0], is_team_lead: false },
+  { user: users[3], team: teams[1], is_team_lead: true },
+  { user: users[4], team: teams[1], is_team_lead: false },
+  { user: users[5], team: teams[1], is_team_lead: false }
 ])

@@ -45,6 +45,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   # Associations
   it { is_expected.to have_one :company_user }
+  it { is_expected.to have_many :team_users }
+  it { is_expected.to have_many(:teams).through(:team_users) }
 
   # Columns
   it { is_expected.to have_db_column(:email).of_type(:string) }

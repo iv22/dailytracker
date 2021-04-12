@@ -22,6 +22,7 @@ RSpec.describe Team, type: :model do
   # Associations
   it { is_expected.to belong_to :company }
   it { is_expected.to have_many :team_users }
+  it { is_expected.to have_many(:users).through(:team_users) }
 
   # Columns
   it { is_expected.to have_db_column(:name).of_type(:string) }

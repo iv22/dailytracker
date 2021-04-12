@@ -36,7 +36,7 @@ const SeparateTeam = ({activeTeam}) => {
           {activeTeam.team_users.map((team_user) => (
             <tr className="team_user-body" key={team_user.id}>
               <td className="team_user-name">
-                {team_user.name}
+                {team_user.user.first_name} {team_user.user.last_name}
                 <div className="vector-17" alt="ball">
                   <Ball />
                 </div>

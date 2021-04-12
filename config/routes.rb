@@ -26,9 +26,10 @@ Rails.application.routes.draw do
       post 'employees/:id/lock', to: 'employees#lock'
       post 'employees/:id/unlock', to: 'employees#unlock'
       post 'invitation/:id', to: 'invitation#create', as: 'invitation'
-    
-      resources :teams, only: [:index, :show, :create, :update, :destroy]
-      resources :team_users, only: [:index, :show, :create, :update, :destroy]
+      
+      resources :teams, only: [:index, :show, :create, :update, :destroy] do
+        resources :team_users, only: [:index, :show, :create, :update, :destroy]
+      end
     end
   end
   match '*path', to: 'home#index', via: :all
