@@ -4,6 +4,7 @@ import axios from 'init/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
   const isEdit = Boolean(id);
@@ -23,7 +24,7 @@ const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
   });
 
   // functions to build form returned by useForm() hook
-  const { register, handleSubmit, setValue, getValues, errors, formState } = useForm({
+  const { register, handleSubmit, setValue, errors } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
@@ -135,5 +136,11 @@ const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
     </div>
   )
 }
+
+EmployeeAddEdit.propTypes = {
+  id: PropTypes.number,
+  handleModalClose: PropTypes.func.isRequired,
+  updatedAt: PropTypes.func.isRequired
+};
 
 export default EmployeeAddEdit;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { UploadDropzoneIcon } from "components/General/Icons";
+import PropTypes from 'prop-types';
 
 const EmployeesUpload = ({handleShow}) => {
 
@@ -27,5 +28,9 @@ const EmployeesUpload = ({handleShow}) => {
     </div>
   )
 }
+
+EmployeesUpload.propTypes = {
+  handleShow: PropTypes.func.isRequired
+};
 
 export default EmployeesUpload;

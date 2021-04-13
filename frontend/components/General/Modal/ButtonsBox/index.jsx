@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ModalButtons = ({handleModalClose}) => {
   return (
@@ -12,5 +13,9 @@ const ModalButtons = ({handleModalClose}) => {
     </div>
   )
 }
+
+ModalButtons.propTypes = {
+  handleModalClose: PropTypes.func.isRequired
+};
 
 export default ModalButtons;

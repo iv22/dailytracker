@@ -6,7 +6,7 @@ import Employee from 'components/Pages/Employee';
 import Setting from 'components/Pages/Setting';
 import './style.css';
 
-export default () => {
+const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" >
@@ -24,3 +24,5 @@ export default () => {
     </Switch>
   );
 }
+
+export default Routes;
