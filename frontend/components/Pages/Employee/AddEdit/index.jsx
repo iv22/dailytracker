@@ -92,7 +92,7 @@ const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
       };
       fetchData();
     }
-  }, []);
+  });
 
   return (
     <div id="e-employee" className="modal-layer smooth" onClick={handleOnClose} >
