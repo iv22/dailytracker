@@ -1,5 +1,6 @@
 import React from 'react';
-import { SendIcon, EditIcon, LockIcon } from 'components/Icons';
+import { SendIcon, EditIcon, LockIcon } from "components/General/Icons";
+import PropTypes from 'prop-types';
 
 const EmployeesListActions = ({handleEdit}) => {
   return (
@@ -16,4 +17,9 @@ const EmployeesListActions = ({handleEdit}) => {
     </React.Fragment>
   )
 }
+
+EmployeesListActions.propTypes = {
+  handleEdit: PropTypes.func.isRequired
+};
+
 export default EmployeesListActions;

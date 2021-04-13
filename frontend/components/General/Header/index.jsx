@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import Ellipse from 'components/Images/ellipse.svg';
-import SquareModule from 'components/Images/square_module.svg';
-import PersonBig from 'components/Images/person_big.svg';
-import CircleBig from 'components/Images/circle_big.svg';
-import Plus from 'components/Images/plus.svg';
-import TwoPersons from 'components/Images/two_persons.svg';
-import Gear from 'components/Images/gear.svg';
+import Ellipse from 'images/ellipse.svg';
+import SquareModule from 'images/square_module.svg';
+import PersonBig from 'images/person_big.svg';
+import CircleBig from 'images/circle_big.svg';
+import Plus from 'images/plus.svg';
+import TwoPersons from 'images/two_persons.svg';
+import Gear from 'images/gear.svg';
 
 const Header = () => {
   return (

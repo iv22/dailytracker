@@ -24,6 +24,10 @@
   "version": "0.1.0",
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
+    "babel-eslint": "8",
+    "eslint": "4.x",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "sass-lint-auto-fix": "^0.21.2",
     "webpack-dev-server": "^3.11.2"
   }

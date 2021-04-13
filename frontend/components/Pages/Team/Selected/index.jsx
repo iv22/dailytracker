@@ -1,10 +1,11 @@
 import React from 'react';
-import ThreeDots from 'components/Images/three_dots.svg';
-import CircleSmall from 'components/Images/circle_small.svg';
-import Plus from 'components/Images/plus.svg';
-import Ball from 'components/Images/ball.svg';
-import Person from 'components/Images/person.svg';
-import Rubbish from 'components/Images/rubbish.svg';
+import ThreeDots from 'images/three_dots.svg';
+import CircleSmall from 'images/circle_small.svg';
+import Plus from 'images/plus.svg';
+import Ball from 'images/ball.svg';
+import Person from 'images/person.svg';
+import Rubbish from 'images/rubbish.svg';
+import PropTypes from 'prop-types';
 
 const SeparateTeam = ({activeTeam}) => {
   return (
@@ -53,4 +54,9 @@ const SeparateTeam = ({activeTeam}) => {
     </div>
   )
 }
-export default SeparateTeam
+
+SeparateTeam.propTypes = {
+  activeTeam: PropTypes.object.isRequired
+};
+
+export default SeparateTeam;

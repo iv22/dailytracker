@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import SeparateTeam from 'components/Teams/SeparateTeam';
-import Ball from 'components/Images/ball.svg';
-import Person from 'components/Images/person.svg';
-import Rubbish from 'components/Images/rubbish.svg';
-import DullCircle from 'components/Images/dull_circle.svg';
-import DimPlus from 'components/Images/dim_plus.svg';
+import SeparateTeam from './Selected';
+import Ball from 'images/ball.svg';
+import Person from 'images/person.svg';
+import Rubbish from 'images/rubbish.svg';
+import DullCircle from 'images/dull_circle.svg';
+import DimPlus from 'images/dim_plus.svg';
+import './style.css';
 
-const TeamApp = () => {
+const Team = () => {
   const [teams, setTeams] = useState([]);
   const [activeTeam, setActiveTeam] = useState(null);
 
@@ -76,4 +77,4 @@ const TeamApp = () => {
     </section>
   )
 }
-export default TeamApp
+export default Team

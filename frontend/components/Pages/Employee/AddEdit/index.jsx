@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ModalButtons from 'components/ModalButtons';
-import axios from '../../init/api';
+import ModalButtons from 'components/General/Modal/ButtonsBox';
+import axios from 'init/api';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
-const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
+const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
   const isEdit = Boolean(id);
   const [error, setError] = useState();
 
@@ -23,7 +24,7 @@ const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
   });
 
   // functions to build form returned by useForm() hook
-  const { register, handleSubmit, setValue, getValues, errors, formState } = useForm({
+  const { register, handleSubmit, setValue, errors } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
@@ -91,7 +92,7 @@ const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
       };
       fetchData();
     }
-  }, []);
+  });
 
   return (
     <div id="e-employee" className="modal-layer smooth" onClick={handleOnClose} >
@@ -136,4 +137,10 @@ const EmployeePopup = ({id, handleModalClose, updatedAt}) => {
   )
 }
 
-export default EmployeePopup;
+EmployeeAddEdit.propTypes = {
+  id: PropTypes.number,
+  handleModalClose: PropTypes.func.isRequired,
+  updatedAt: PropTypes.func.isRequired
+};
+
+export default EmployeeAddEdit;
