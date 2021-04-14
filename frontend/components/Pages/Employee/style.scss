@@ -202,19 +202,37 @@
   left: 50%;
   margin: 10px;
   position: relative;
-  top: 45%;
+  top: 15%;
   transform: translate(-50%, -50%);
 }
 
-.e-upload-dropzone {
+.e-upload-icon {
   background-size: 64px;
   height: 64px;
   left: 50%;
   margin: auto;
   position: relative;
-  top: 20%;
+  top: 15%;
   transform: translate(-50%);
   width: 64px;
+}
+
+.e-upload-zone {
+  align-items: center;
+  border-color: var(--x-close-color);
+  border-radius: 2;
+  border-style: dashed;
+  border-width: 2;
+  color: var(--x-close-color);
+  margin: 20px;
+  position: relative;
+  top: 15%;
+  outline: none;
+  transition: border .24s ease-in-out;
+
+  :hover {
+    background: var(--selected-color);
+  }
 }
 
 .e-upload-text {
@@ -226,6 +244,21 @@
   position: relative;
   text-align: center;
   top: 25%;
+}
+
+.e-upload-result {
+  position: relative;
+  top: 5%;
+}
+
+.e-upload-info {
+  position: relative;
+  left: 40px;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: normal;
+  top: 15%;
 }
 
 .modal-upload {
