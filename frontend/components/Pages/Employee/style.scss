@@ -225,9 +225,9 @@
   border-width: 2;
   color: var(--x-close-color);
   margin: 20px;
+  outline: none;
   position: relative;
   top: 15%;
-  outline: none;
   transition: border .24s ease-in-out;
 
   :hover {
@@ -252,12 +252,12 @@
 }
 
 .e-upload-info {
-  position: relative;
-  left: 40px;
   font-family: Inter;
   font-size: 16px;
   font-style: italic;
   font-weight: normal;
+  left: 40px;
+  position: relative;
   top: 15%;
 }
 
