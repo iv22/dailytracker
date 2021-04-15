@@ -6,7 +6,6 @@ import axios from "init/api";
 
 const EmployeesUpload = ({handleShow}) => {
   const [files, setFiles] = useState([]);
-  const [updatedAt, setUpdatedAt] = useState(Date.now);
   const [result, setResult] = useState({status: 100, message: ""});
 
   const {acceptedFiles, getRootProps, getInputProps} = useDropzone({
@@ -21,12 +20,11 @@ const EmployeesUpload = ({handleShow}) => {
       </li>
     ));
     setFiles(newFiles);
-  },[acceptedFiles, updatedAt]);
+  },[acceptedFiles, result]);
 
   const removeFile = () => {
     acceptedFiles.length = 0
     acceptedFiles.splice(0, acceptedFiles.length)
-    setUpdatedAt(Date.now);
   }
 
   const handleFormClose = (e) => {
@@ -61,7 +59,7 @@ const EmployeesUpload = ({handleShow}) => {
 
   return (
     <div id="e-upload" className="modal-layer smooth" onClick={handleFormClose}>
-      <div className="modal-upload smooth e-upload-form" >
+      <div className="modal-upload smooth" >
         <span className="close" onClick={() => handleShow(false)}>
           &times;
         </span>
