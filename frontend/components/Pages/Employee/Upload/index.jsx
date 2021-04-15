@@ -71,24 +71,26 @@ const EmployeesUpload = ({handleShow}) => {
             {result["message"]}
           </div>
         }
-        <UploadDropzoneIcon className="e-upload-icon" />
-        <div {...getRootProps({className: "e-upload-zone" })} >
-          <input {...getInputProps()} />
-          <div className="e-upload-text">
-            Drag &amp; Drop files here
-            <br />
-            or click to Browse
+        <div className="e-upload-body">
+          <UploadDropzoneIcon className="e-upload-icon" />
+          <div {...getRootProps({className: "e-upload-zone" })} >
+            <input {...getInputProps()} />
+            <div className="e-upload-text">
+              Drag &amp; Drop files here
+              <br />
+              or click to Browse
+            </div>
           </div>
+          <aside className="e-upload-info">
+              <h6>You attached the file:</h6>
+              <ul>{files}</ul>
+          </aside>
+          { files.length > 0 &&
+            <button type="button" className="right-button e-clickable submit-color" onClick={handleSubmit}>
+              Submit
+            </button>
+          }
         </div>
-        <aside className="e-upload-info">
-            <h6>You attached the file:</h6>
-            <ul>{files}</ul>
-        </aside>
-        { files.length > 0 &&
-          <button type="button" className="right-button e-clickable submit-color" onClick={handleSubmit}>
-            Submit
-          </button>
-        }
       </div>
     </div>
   )
