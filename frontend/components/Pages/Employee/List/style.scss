@@ -1,0 +1,66 @@
+.e-index-table {
+  color: var(--text-color);
+  left: 20px;
+  position: absolute;
+  table-layout: fixed;
+  top: 145px;
+  width: calc(100% - 2*20px);
+}
+
+.e-index-head tr {
+  display: block;
+  font-family: Roboto;
+  font-size: 24px;
+  height: 48px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.e-icon-col {
+  width: 42px;
+}
+
+.e-name-col {
+  width: 160px;
+}
+
+.e-email-col {
+  width: 180px;
+}
+
+.e-phone-col {
+  width: 160px;
+}
+
+.e-role-col {
+  width: 120px;
+}
+
+.e-status-col {
+  width: 100px;
+}
+
+.e-index-body {
+  display: block;
+  font-family: Inter;
+  font-size: 16px;
+  height: 500px;
+  letter-spacing: 0;
+  overflow: auto;
+  text-align: left;
+}
+
+.e-action-row {
+  bottom: 20px;
+  height: 42px;
+  left: 20px;
+  position: absolute;
+}
+
+.e-index-row {
+  height: 42px;
+}
+
+.e-index-row:hover {
+  background-color: var(--submit-light);
+}
