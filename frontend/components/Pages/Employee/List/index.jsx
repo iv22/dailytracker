@@ -36,7 +36,7 @@ const EmployeesList = () => {
         return <ActiveIcon title="active" />
       case "locked":
         return <LockedIcon title="locked" />
-      case "Invited":
+      case "invited":
         return <InvitedIcon title="invited" />
     }
   }
