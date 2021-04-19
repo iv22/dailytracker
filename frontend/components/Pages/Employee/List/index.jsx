@@ -42,11 +42,11 @@ const EmployeesList = () => {
   }
 
   return (
-    <React.Fragment>
+    <>
       {isEmployeeOpen && <EmployeeAddEdit id={id} handleModalClose={() => setIsEmployeeOpen(false)} updatedAt={setUpdatedAt} />}
 
       {error ? <div className="alert alert-danger" role="alert">{error}</div> :
-        <React.Fragment>
+        <>
           <table className="e-index-table">
             <thead className="e-index-head">
               <tr>
@@ -85,9 +85,9 @@ const EmployeesList = () => {
               <span className="e-add-person-text">Add&nbsp;employee</span>
             </div>
           </div>
-        </React.Fragment>
+        </>
       }
-    </React.Fragment>
+    </>
   )
 }
 export default EmployeesList;

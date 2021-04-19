@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const EmployeesListActions = ({handleEdit}) => {
   return (
-    <React.Fragment>
+    <>
       <div className="e-action e-clickable-icon" title="Resend invitation">
         <SendIcon />
       </div>
@@ -14,7 +14,7 @@ const EmployeesListActions = ({handleEdit}) => {
       <div className="e-action e-clickable-icon" title="Lock">
         <LockIcon />
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
