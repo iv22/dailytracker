@@ -4,7 +4,7 @@ module Api
   module V1
     # TeamsController
     class TeamsController < ApplicationController
-      before_action :authenticate_user!
+      include Api
 
       def index
         @teams = user.company.teams
@@ -13,11 +13,7 @@ module Api
       end
 
       def show
-        if team
-          render json: team, serializer: TeamSerializer
-        else
-          render json: team.errors
-        end
+        render json: team, serializer: TeamSerializer
       end
 
       def create
@@ -49,14 +45,6 @@ module Api
 
       def team_params
         params.require(:team).permit(:name, :company_id)
-      end
-
-      def user
-        @user ||= User.find_by(params[:user_id]).decorate
-      end
-
-      def company
-        @company ||= current_user.company_user&.company&.decorate
       end
 
       def team
