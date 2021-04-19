@@ -50,6 +50,28 @@ module Api
         end
       end
 
+      def lock
+        authorize! member, with: Employees::UserPolicy
+
+        if access_locked?
+          render json: { message: I18n.t('employees.lock.locked_status') }, status: :not_acceptable
+        else
+          member.lock_access!({ send_instructions: false })
+          render json: { message: I18n.t('employees.unlock.success') }, status: :ok
+        end
+      end
+
+      def unlock
+        authorize! member, with: Employees::UserPolicy
+
+        if access_locked?
+          member.unlock_access!
+          render json: { message: I18n.t('employees.unlock.success') }, status: :ok
+        else
+          render json: { message: I18n.t('employees.unlock.active_status') }, status: :not_acceptable
+        end
+      end
+
       private
 
       def member_params

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :employees, except: [:new, :edit]
       post 'employees/upload', to: 'employees#upload'
+      post 'employees/:id/lock', to: 'employees#lock'
+      post 'employees/:id/unlock', to: 'employees#unlock'
       post 'invitation/:id', to: 'invitation#create', as: 'invitation'
     end
   end
