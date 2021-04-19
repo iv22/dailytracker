@@ -19,6 +19,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string           not null
+#  locked_at              :datetime
 #  phone                  :string(20)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime

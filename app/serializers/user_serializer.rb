@@ -19,6 +19,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string           not null
+#  locked_at              :datetime
 #  phone                  :string(20)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -40,5 +41,5 @@
 #  index_users_on_role                               (role)
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :first_name, :last_name, :role, :phone
+  attributes :id, :email, :first_name, :last_name, :role, :phone, :status
 end

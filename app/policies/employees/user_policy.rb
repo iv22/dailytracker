@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module Employees
-  # Check current User credentials
+  # Check current User role
   class UserPolicy < ApplicationPolicy
+    include PermissionChecker
+
     def index?
       manager?
     end
@@ -25,16 +27,6 @@ module Employees
 
     def upload?
       manager?
-    end
-
-    private
-
-    def manager?
-      user.role == 'manager'
-    end
-
-    def manager_for?(member)
-      manager? && user.company_user.company == member.company
     end
   end
 end
