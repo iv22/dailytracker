@@ -9,32 +9,11 @@ module Employees
       manager?
     end
 
-    def create?
-      manager?
-    end
-
     def show?
       manager_for?(record)
     end
 
-    def update?
-      manager_for?(record)
-    end
-
-    def destroy?
-      manager_for?(record)
-    end
-
-    def upload?
-      manager?
-    end
-
-    def lock?
-      manager_for?(record)
-    end
-
-    def unlock?
-      manager_for?(record)
-    end
+    %i[create? upload?].each { |method| alias_method method, :index? }
+    %i[update? destroy? lock? unlock?].each { |method| alias_method method, :show? }
   end
 end
