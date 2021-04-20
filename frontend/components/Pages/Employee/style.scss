@@ -14,66 +14,6 @@
   width: 100%;
 }
 
-.e-index-table {
-  color: var(--text-color);
-  left: 20px;
-  position: absolute;
-  top: 145px;
-  width: calc(100% - 2*20px);
-}
-
-.e-index-head tr {
-  font-family: Roboto;
-  font-size: 24px;
-  height: 48px;
-  letter-spacing: 0;
-  text-align: left;
-  vertical-align: top;
-}
-
-.e-icon-head {
-  width: 42px;
-}
-
-.e-name-head {
-  width: 20%;
-}
-
-.e-email-head {
-  width: 25%;
-}
-
-.e-phone-head {
-  width: 18%;
-}
-
-.e-role-head {
-  width: 10%;
-}
-
-.e-status-head {
-  width: 8%;
-}
-
-.e-index-body {
-  font-family: Inter;
-  font-size: 16px;
-  letter-spacing: 0;
-  text-align: left;
-}
-
-.e-action-row {
-  height: 42px;
-}
-
-.e-index-row {
-  height: 42px;
-}
-
-.e-index-row:hover {
-  background-color: var(--submit-light);
-}
-
 .e-icon {
   position: relative;
 }
@@ -197,24 +137,33 @@
   }
 }
 
-.e-upload-form button {
-  display: block;
-  left: 50%;
-  margin: 10px;
-  position: relative;
-  top: 45%;
-  transform: translate(-50%, -50%);
-}
-
-.e-upload-dropzone {
+.e-upload-icon {
   background-size: 64px;
   height: 64px;
   left: 50%;
   margin: auto;
   position: relative;
-  top: 20%;
+  top: 15%;
   transform: translate(-50%);
   width: 64px;
+}
+
+.e-upload-zone {
+  align-items: center;
+  border-color: var(--x-close-color);
+  border-radius: 2;
+  border-style: dashed;
+  border-width: 2;
+  color: var(--x-close-color);
+  margin: 20px;
+  outline: none;
+  position: relative;
+  top: 15%;
+  transition: border .24s ease-in-out;
+
+  :hover {
+    background: var(--selected-color);
+  }
 }
 
 .e-upload-text {
@@ -228,14 +177,46 @@
   top: 25%;
 }
 
+.e-upload-result {
+  position: absolute;
+  top: 35px;
+  width: calc(100% - 20px);
+}
+
+.e-upload-body {
+  height: 450px;
+  position: absolute;
+  top: 75px;
+  width: calc(100% - 20px);
+}
+
+.e-upload-info {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: normal;
+  left: 40px;
+  position: relative;
+  top: 15%;
+}
+
 .modal-upload {
   background-color: var(--modal-color);
-  height: 70%;
+  height: 600px;
   left: 15%;
   padding: 10px;
   position: absolute;
   top: 15%;
   width: 70%;
+
+  button {
+    bottom: 0;
+    display: block;
+    left: 50%;
+    margin: 10px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .modal-edit {
