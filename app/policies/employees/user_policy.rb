@@ -28,5 +28,13 @@ module Employees
     def upload?
       manager?
     end
+
+    def lock?
+      manager_for?(record)
+    end
+
+    def unlock?
+      manager_for?(record)
+    end
   end
 end
