@@ -8,3 +8,9 @@ en:
       locked: "Invitation can't be sent because User is locked"
       resended: 'Invitation was resended successfully'
       rejected: 'Invitation resending was rejected'
+    lock:
+      locked_status: 'Account already locked'
+      success: 'Account has been locked successfully'
+    unlock:
+      active_status: 'Account is acive'
+      success: 'Account has been unlocked successfully'
