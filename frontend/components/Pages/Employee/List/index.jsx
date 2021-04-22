@@ -9,7 +9,7 @@ import { PersonIcon, DimPlusIcon, ActiveIcon, InvitedIcon, LockedIcon } from "co
 
 const EmployeesList = () => {
   const [employees, setEmployees] = useState([]);
-  const [isEmployeeOpen, setIsActionOpen] = useState({invite: false, edit: false, lock: false});
+  const [isActionOpen, setIsActionOpen] = useState(false);
   const [error, setError] = useState();
   const [id, setId] = useState();
   const [updatedAt, setUpdatedAt] = useState();
@@ -29,7 +29,7 @@ const EmployeesList = () => {
 
   const handleAction = (id, action) => {
     setId(id);
-    setIsActionOpen(isOpen => ({...isOpen, [action]: true}))
+    setIsActionOpen(action)
   };
 
   const getStatusIcon = (status) => {
@@ -43,19 +43,22 @@ const EmployeesList = () => {
     }
   }
 
+  const getActionComponent = () => {
+    switch(isActionOpen) {
+      case "invite":
+        return <EmployeeInvite id={id} handleModalClose={() => setIsActionOpen(false)} updatedAt={setUpdatedAt} />;
+      case "edit":
+        return <EmployeeAddEdit id={id} handleModalClose={() => setIsActionOpen(false)} updatedAt={setUpdatedAt} />;
+      case "lock":
+        return <EmployeeLock id={id} handleModalClose={() => setIsActionOpen(false)} updatedAt={setUpdatedAt} />;
+      default:
+        return null
+    }
+  }
+
   return (
     <>
-      {isEmployeeOpen["invite"] &&
-        <EmployeeInvite id={id} handleModalClose={() => setIsActionOpen(isOpen => ({...isOpen, invite: false}))}
-          updatedAt={setUpdatedAt} />}
-
-      {isEmployeeOpen["edit"] &&
-        <EmployeeAddEdit id={id} handleModalClose={() => setIsActionOpen(isOpen => ({...isOpen, edit: false}))}
-          updatedAt={setUpdatedAt} />}
-
-      {isEmployeeOpen["lock"] &&
-        <EmployeeLock id={id} handleModalClose={() => setIsActionOpen(isOpen => ({...isOpen, lock: false}))}
-          updatedAt={setUpdatedAt} />}
+      { getActionComponent() }
 
       {error ? <div className="alert alert-danger" role="alert">{error}</div> :
         <>
