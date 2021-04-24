@@ -17,52 +17,38 @@ const Team = () => {
     <section className="section">
       <nav className="nav">
         <h3 className="all-names">All teams</h3>
-        <span>
-          <div className="ball-icon" alt="ball">
-            <Ball />
-          </div>
-          <div className="person-icon" alt="person">
-            <Person />
-          </div>
+        <span className="ball-icon" alt="ball">
+          <Ball />
+        </span>
+        <span className="person-icon" alt="person">
+          <Person />
         </span>
       </nav>
       <article className="article-content">
         <aside className="aside">
-          <table className="aside-content">
-            <thead>
-              <tr>
-                <th className="aside-title">Team name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {teams.map((team) => (
-                <tr key={team.id}>
-                  <td className="aside-name" onClick={() => setActiveTeam(team)}>
-                    {team.name}
-                    <div className="t-ball-icon" alt="ball">
-                      <Ball />
-                    </div>
-                    <div className="t-person-icon" alt="person">
-                      <Person />
-                    </div>
-                    <div className="t-rubbish-icon" alt="rubbish">
-                      <Rubbish />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-              <tr>
-                <td>
-                  <div className="t-dullCircle-icon" alt="dull_circle">
-                    <DullCircle />
-                  </div>
-                  <div className="t-dimPlus-icon" alt="dim_plus">
-                    <DimPlus />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <h2 className="aside-title">Team name</h2>
+          {teams.map((team) => (
+            <ul key={team.id} className="aside-name" onClick={() => setActiveTeam(team)}>
+              <li>
+                {team.name}
+                <div className="t-ball-icon" alt="ball">
+                  <Ball />
+                </div>
+                <div className="t-person-icon" alt="person">
+                  <Person />
+                </div>
+                <div className="t-rubbish-icon" alt="rubbish">
+                  <Rubbish />
+                </div>
+              </li>
+            </ul>
+          ))}
+          <div className="t-dullcircle-icon" alt="dull_circle">
+            <DullCircle />
+          </div>
+          <div className="t-dimplus-icon" alt="dim_plus">
+            <DimPlus />
+          </div>
         </aside>
         <footer className="footer">
           {activeTeam ? (

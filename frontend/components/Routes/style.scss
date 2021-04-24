@@ -26,9 +26,8 @@
 }
 
 .ellipse-icon {
-  margin-left: 55px;
-  margin-top: 48px;
-  position: absolute;
+  margin-left: 15.5%;
+  margin-top: -89px;
 }
 
 .header-links {
@@ -45,7 +44,7 @@
   margin-top: 71px;
 }
 
-.squareModule-icon {
+.squaremodule-icon {
   margin-left: 27px;
   position: absolute;
 }
@@ -66,22 +65,20 @@
   margin-top: 81px;
 }
 
-.personBig-icon {
+.personbig-icon {
   margin-left: 21.67px;
   margin-top: 80.67px;
   position: absolute;
 }
 
-.circleBig-icon {
-  top: -23px;
-  right: 5px;
-  position: absolute;
+.circlebig-icon {
+  margin-top: -50px;
+  margin-left: 178px;
 }
 
 .plus-icon {
-  right: 35px;
-  top: calc(50% - 16px);
-  position: absolute;
+  margin-top: -53px;
+  margin-left: 208px;
 }
 
 .nav-teams__link {
@@ -89,7 +86,7 @@
   margin-top: 82px;
 }
 
-.twoPersons-icon {
+.twopersons-icon {
   margin-left: 16.67px;
   margin-top: 85px;
   position: absolute;
@@ -116,17 +113,19 @@
 }
 
 .nav {
+  align-content: center;
   background-color: var(--article-color);
   border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
   grid-area: nav;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .all-names {
   font-size: 24px;
   font-weight: 500;
   line-height: 28px;
-  margin-left: 50px;
+  margin-left: 3.47%;
+  margin-bottom: 0;
+  margin-top: 5px;
 }
