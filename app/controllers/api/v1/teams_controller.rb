@@ -7,16 +7,19 @@ module Api
       include Api
 
       def index
+        authorize! Object, with: Teams::TeamsPolicy
         @teams = user.company.teams
 
         render json: @teams, each_serializer: TeamSerializer
       end
 
       def show
+        authorize! team, with: Teams::TeamsPolicy
         render json: team, serializer: TeamSerializer
       end
 
       def create
+        authorize! Object, with: Teams::TeamsPolicy
         @team = user.company.teams.build(team_params)
 
         if @team.save
@@ -26,9 +29,8 @@ module Api
         end
       end
 
-      def edit; end
-
       def update
+        authorize! team, with: Teams::TeamsPolicy
         if team.update(team_params)
           render json: team, status: :ok, location: api_v1_team_path(team)
         else
@@ -37,6 +39,7 @@ module Api
       end
 
       def destroy
+        authorize! team, with: Teams::TeamsPolicy
         team.destroy
         head :no_content
       end
