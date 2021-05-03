@@ -1,0 +1,131 @@
+// App 
+.main {
+  color: var(--article-content-color);
+  display: grid;
+  grid-template-areas: "header section";
+  grid-template-columns: 20% auto;
+  grid-gap: 10px;
+  margin: 10px;
+}
+
+// Header 
+.header {
+  background-color: var(--article-color);
+  border-radius: 10px;
+  height: 880px;
+  grid-area: header;
+}
+
+.header-name {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 42px;
+  margin: 47px 19%;
+  position: relative;
+}
+
+.ellipse-icon {
+  margin-left: 15.5%;
+  margin-top: -89px;
+}
+
+.header-links {
+  list-style: none;
+}
+
+.header-links a {
+  color: var(--article-content-color);
+  text-decoration: none;
+}
+
+.nav-dashboard__link {
+  margin-left: 71px;
+  margin-top: 71px;
+}
+
+.squaremodule-icon {
+  margin-left: 27px;
+  position: absolute;
+}
+
+.nav-dashboard__link,
+.nav-employees__link,
+.nav-teams__link,
+.nav-settings__link {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  position: relative;
+}
+
+.nav-employees__link {
+  margin-left: 65px;
+  margin-top: 81px;
+}
+
+.personbig-icon {
+  margin-left: 21.67px;
+  margin-top: 80.67px;
+  position: absolute;
+}
+
+.circlebig-icon {
+  margin-top: -50px;
+  margin-left: 178px;
+}
+
+.plus-icon {
+  margin-top: -53px;
+  margin-left: 208px;
+}
+
+.nav-teams__link {
+  margin-left: 65px;
+  margin-top: 82px;
+}
+
+.twopersons-icon {
+  margin-left: 16.67px;
+  margin-top: 85px;
+  position: absolute;
+}
+
+.nav-settings__link {
+  margin-left: 65px;
+  margin-top: 405px;
+}
+
+.gear-icon {
+  margin-left: 19.44px;
+  margin-top: 405.33px;
+  position: absolute;
+}
+
+//Common to all pages
+.section {
+  display: grid;
+  grid-template-rows: 97px 773px;
+  grid-template-areas: 'nav''article';
+  grid-gap: 10px;
+  grid-area: section;
+}
+
+.nav {
+  align-content: center;
+  background-color: var(--article-color);
+  border-radius: 10px;
+  grid-area: nav;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.all-names {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  margin-left: 3.47%;
+  margin-bottom: 0;
+  margin-top: 5px;
+}

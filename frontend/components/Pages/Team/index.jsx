@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SeparateTeam from './Selected';
-import Ball from 'images/ball.svg';
-import Person from 'images/person.svg';
-import Rubbish from 'images/rubbish.svg';
-import DullCircle from 'images/dull_circle.svg';
-import DimPlus from 'images/dim_plus.svg';
-import './style.css';
+import './style';
+import { Ball, Person, Rubbish, DullCircle, DimPlus } from "components/General/Icons";
 
 const Team = () => {
   const [teams, setTeams] = useState([]);
@@ -21,52 +17,42 @@ const Team = () => {
     <section className="section">
       <nav className="nav">
         <h3 className="all-names">All teams</h3>
-        <span>
-          <div className="vector-7" alt="ball">
-            <Ball />
-          </div>
-          <div className="vector-8" alt="person">
-            <Person />
-          </div>
+        <span className="ball-icon" alt="ball">
+          <Ball />
+        </span>
+        <span className="person-icon" alt="person">
+          <Person />
         </span>
       </nav>
-      <article className="article-teams">
-        <aside className="teams-name">
-          <table className="team-table">
-            <thead>
-              <tr>
-                <th className="team-head">Team name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {teams.map((team) => (
-                <tr className="team-body" key={team.id}>
-                  <td className="team-name" onClick={() => setActiveTeam(team)}>
-                    {team.name}
-                    <div className="vector-9" alt="ball">
-                      <Ball />
-                    </div>
-                    <div className="vector-10" alt="person">
-                      <Person />
-                    </div>
-                    <div className="vector-13" alt="rubbish">
-                      <Rubbish />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="vector-11" alt="dull_circle">
+      <article className="article-content">
+        <aside className="aside">
+          <h2 className="aside-title">Team name</h2>
+          {teams.map((team) => (
+            <ul key={team.id} className="aside-name" onClick={() => setActiveTeam(team)}>
+              <li>
+                {team.name}
+                <div className="t-ball-icon" alt="ball">
+                  <Ball />
+                </div>
+                <div className="t-person-icon" alt="person">
+                  <Person />
+                </div>
+                <div className="t-rubbish-icon" alt="rubbish">
+                  <Rubbish />
+                </div>
+              </li>
+            </ul>
+          ))}
+          <div className="t-dullcircle-icon" alt="dull_circle">
             <DullCircle />
           </div>
-          <div className="vector-12" alt="dim_plus">
+          <div className="t-dimplus-icon" alt="dim_plus">
             <DimPlus />
           </div>
         </aside>
-        <footer className="team-members">
+        <footer className="footer">
           {activeTeam ? (
-            <ul className="separate-team">
+            <ul className="footer-content">
               <li>
                 {<SeparateTeam activeTeam={activeTeam} />}
               </li>

@@ -4,7 +4,7 @@ import Team from 'components/Pages/Team';
 import Dashboard from 'components/Pages/Dashboard';
 import Employee from 'components/Pages/Employee';
 import Setting from 'components/Pages/Setting';
-import './style.css';
+import './style';
 
 const Routes = () => {
   return (

@@ -1,62 +1,71 @@
 import React from 'react';
-import ThreeDots from 'images/three_dots.svg';
-import CircleSmall from 'images/circle_small.svg';
-import Plus from 'images/plus.svg';
-import Ball from 'images/ball.svg';
-import Person from 'images/person.svg';
-import Rubbish from 'images/rubbish.svg';
 import PropTypes from 'prop-types';
+import { ThreeDots, CircleSmall, Plus, Ball, Person, Rubbish } from "components/General/Icons";
 
-const SeparateTeam = ({activeTeam}) => {
+const SeparateTeam = ({ activeTeam }) => {
   return (
-    <div>
-      <nav className="team-nav">
-        <h3 className="name-team">{activeTeam.name}</h3>
-        <span>
-          <div className="vector-14" alt="three_dots">
-            <ThreeDots />
-          </div>
-        </span>
+    <div className="general">
+      <nav className="general-nav">
+        <h3 className="general-name">{activeTeam.name}</h3>
+        <div className="s-threedots-icon" alt="three_dots">
+          <ThreeDots />
+        </div>
       </nav>
-      <table width="33%" cellSpacing="0" cellPadding="0">
-        <thead>
-          <tr>
-            <th className="team_user-head">Team Members</th>
-            <td>
-              <div className="vector-15" alt="circle_small">
-                <CircleSmall />
-              </div>
-              <div className="vector-16" alt="plus">
-                <Plus />
-              </div>
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          {activeTeam.team_users.map((team_user) => (
-            <tr className="team_user-body" key={team_user.id}>
-              <td className="team_user-name">
-                {team_user.name}
-                <div className="vector-17" alt="ball">
-                  <Ball />
-                </div>
-                <div className="vector-18" alt="person">
-                  <Person />
-                </div>
-                <div className="vector-19" alt="rubbish">
-                  <Rubbish />
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <main className="general-part">
+        <aside className="general-part1">
+          <h2 className="general-part1__title">Team Lead</h2>
+          <span className="s-circlesmall-icon" alt="circle_small">
+            <CircleSmall />
+          </span>
+          <span className="s-plus-icon" alt="plus">
+            <Plus />
+          </span>
+          <span className="s-ball-icon" alt="ball">
+            <Ball />
+          </span>
+          <span className="s-person-icon" alt="person">
+            <Person />
+          </span>
+          <span className="s-rubbish-icon" alt="rubbish">
+            <Rubbish />
+          </span>
+        </aside>
+        <aside className="general-part2">
+          <h2 className="general-part2__title">Team Members</h2>
+          <span className="s-circlesmall1-icon" alt="circle_small">
+            <CircleSmall />
+          </span>
+          <span className="s-plus1-icon" alt="plus">
+            <Plus />
+          </span>
+          <div className="general-part2_content">
+            {activeTeam.team_users.map((team_user) => (
+              <ul key={team_user.id} className="general-part2__name">
+                <li>
+                  {team_user.user.first_name} {team_user.user.last_name}
+                  <span className="s-ball2-icon" alt="ball">
+                    <Ball />
+                  </span>
+                  <span className="s-person2-icon" alt="person">
+                    <Person />
+                  </span>
+                  <span className="s-rubbish2-icon" alt="rubbish">
+                    <Rubbish />
+                  </span>
+                </li>
+              </ul>
+            ))}
+          </div>
+        </aside>
+      </main>
     </div>
   )
 }
 
 SeparateTeam.propTypes = {
-  activeTeam: PropTypes.object.isRequired
+  activeTeam: PropTypes.shape({
+    name: PropTypes.string.isRequire
+  })
 };
 
 export default SeparateTeam;
