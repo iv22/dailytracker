@@ -24,4 +24,8 @@ module Api
   def params_invalid(error)
     render json: { error: error.message }, status: :unprocessable_entity
   end
+
+  def user
+    @user ||= User.find_by(params[:user_id]).decorate
+  end
 end

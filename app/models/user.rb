@@ -42,7 +42,8 @@
 #
 class User < ApplicationRecord
   has_one :company_user, dependent: :destroy
-
+  has_many :team_users
+  has_many :teams, through: :team_users
   enum role: { admin: 0, manager: 1, employee: 2 }
 
   validates :first_name, presence: true

@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  protect_from_forgery with: :null_session
+
   protected
 
   def configure_permitted_parameters
