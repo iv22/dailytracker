@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import EmployeesListActions from './Action';
-import EmployeeAddEdit from '../AddEdit';
+import EmployeesListActions from './Actions';
+import EmployeeAddEdit from './Actions/AddEdit';
+import EmployeeInvite from './Actions/Invite';
+import EmployeeLock from './Actions/Lock';
 import axios from 'init/api';
 import "./style";
 import { PersonIcon, DimPlusIcon, ActiveIcon, InvitedIcon, LockedIcon } from "components/General/Icons";
 
 const EmployeesList = () => {
   const [employees, setEmployees] = useState([]);
-  const [isEmployeeOpen, setIsEmployeeOpen] = useState(false);
+  const [isActionOpen, setIsActionOpen] = useState(false);
   const [error, setError] = useState();
   const [id, setId] = useState();
   const [updatedAt, setUpdatedAt] = useState();
@@ -25,9 +27,9 @@ const EmployeesList = () => {
     fetchData();
   }, [updatedAt]);
 
-  const handleAddEdit = (id) => {
+  const handleAction = (id, action) => {
     setId(id);
-    setIsEmployeeOpen(true);
+    setIsActionOpen(action)
   };
 
   const getStatusIcon = (status) => {
@@ -41,9 +43,22 @@ const EmployeesList = () => {
     }
   }
 
+  const getActionComponent = () => {
+    switch(isActionOpen) {
+      case "invite":
+        return <EmployeeInvite id={id} handleModalClose={() => setIsActionOpen(false)} updatedAt={setUpdatedAt} />;
+      case "edit":
+        return <EmployeeAddEdit id={id} handleModalClose={() => setIsActionOpen(false)} updatedAt={setUpdatedAt} />;
+      case "lock":
+        return <EmployeeLock id={id} handleModalClose={() => setIsActionOpen(false)} updatedAt={setUpdatedAt} />;
+      default:
+        return null
+    }
+  }
+
   return (
     <>
-      {isEmployeeOpen && <EmployeeAddEdit id={id} handleModalClose={() => setIsEmployeeOpen(false)} updatedAt={setUpdatedAt} />}
+      { getActionComponent() }
 
       {error ? <div className="alert alert-danger" role="alert">{error}</div> :
         <>
@@ -72,7 +87,10 @@ const EmployeesList = () => {
                   <td className="e-role-col">{emp.role}</td>
                   <td className="text-center e-status-col">{getStatusIcon(emp.status)}</td>
                   <td className="e-data-cell e-action-col">
-                    <EmployeesListActions handleEdit={() => handleAddEdit(emp.id)} />
+                    <EmployeesListActions
+                      handleInvite={() => handleAction(emp.id, "invite")}
+                      handleEdit={() => handleAction(emp.id, "edit")}
+                      handleLock={() => handleAction(emp.id, "lock")} />
                   </td>
                 </tr>
               ))}
@@ -80,7 +98,7 @@ const EmployeesList = () => {
           </table>
           <div className="e-action-row">
             <div className="e-circle e-add-person-circle e-clickable"
-              onClick={() => handleAddEdit()}>
+              onClick={() => handleAction(null, "edit")}>
               <DimPlusIcon className="e-circle e-add-person-icon" />
               <span className="e-add-person-text">Add&nbsp;employee</span>
             </div>

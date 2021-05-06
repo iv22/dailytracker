@@ -219,13 +219,22 @@
   }
 }
 
-.modal-edit {
+%modal-action-shared {
   background-color: var(--modal-color);
-  height: 420px;
   margin: 200px auto;
   padding: 20px;
   position: relative;
   width: 540px;
+}
+
+.modal-edit {
+  @extend %modal-action-shared;
+  height: 420px;
+}
+
+.modal-invite {
+  @extend %modal-action-shared;
+  height: 340px;
 }
 
 .flex-outer {

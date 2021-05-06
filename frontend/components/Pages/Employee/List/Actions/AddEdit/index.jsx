@@ -92,7 +92,7 @@ const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
       };
       fetchData();
     }
-  });
+  }, [setValue, isEdit]);
 
   return (
     <div id="e-employee" className="modal-layer smooth" onClick={handleOnClose} >
@@ -112,7 +112,7 @@ const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
               <div className="invalid-feedback">{errors.first_name?.message}</div>
             </div>
             <div>
-              <label htmlFor="e-employee-fname" className="modal-caption">Last name:</label>
+              <label htmlFor="e-employee-lname" className="modal-caption">Last name:</label>
               <input type="text" id="e-employee-lname" name="last_name" ref={register} className="modal-input" />
               <div className="invalid-feedback">{errors.last_name?.message}</div>
             </div>
@@ -130,7 +130,7 @@ const EmployeeAddEdit = ({id, handleModalClose, updatedAt}) => {
               <input type="tel" id="e-employee-phone" name="phone" ref={register} className="modal-input" />
             </div>
           </div>
-          <ModalButtons handleModalClose={handleModalClose} />
+          <ModalButtons handleModalClose={handleModalClose} okCaption={"SAVE"} />
         </form>
       </div>
     </div>

@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      get 'invitation/create'
-    end
-  end
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
