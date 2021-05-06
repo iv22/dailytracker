@@ -1,6 +1,6 @@
 .main-page {
   background-color: #E5E5E5;
-  font-family: Georgia, 'Times New Roman', Times, serif, Arial, Verdana, Tahoma, sans-serif;
+  font-family: Roboto, Georgia, 'Times New Roman', Times, serif, Arial, Verdana, Tahoma, sans-serif;
 }
 
 .main-container {
@@ -139,3 +139,138 @@
   line-height: 28px;
   margin-left: 50px;
 }
+
+/* Devise styles */
+.app {
+  background-color: var(--modal-color);
+  font-family: Roboto, Georgia, 'Times New Roman', Times, serif, Arial, Verdana, Tahoma, sans-serif;
+  text-align: center;
+}
+
+/* registration*/
+.app-title-registration,
+.app-title-login {
+  position: relative;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  color: var(--article-content-color);
+}
+
+.app-title-registration {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.alert-fo {
+  display: flex;
+  justify-content: center;
+}
+
+.alert-info,
+.alert-success,
+.alert-danger {
+  background-color: var(--alert-color);
+  border-color: var(--alert-border-color);
+  width: 500px;
+}
+
+/* login */
+.app-title-login {
+  margin-bottom: 30px;
+  margin-top: 210px;
+}
+
+/*.ellips {
+  position: absolute;
+  margin-left: -100px;
+  margin-top: -60px;
+}
+*/
+
+legend {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0px;
+  padding: 0px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="text"] {
+  border-radius: 3px;
+  width: 326px;
+  height: 54px;
+  margin-bottom: 17px;
+  border: solid 1px var(--app-border-color);
+  outline: none;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  background-color: transparent;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="text"]::placeholder {
+  color: var(--app-input-color);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  padding-left: 15px;
+  text-indent: 3px;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="text"]:hover {
+  background-color: var(--alert-color);
+}
+
+input[type="email"]:focus::placeholder,
+input[type="password"]:focus::placeholder,
+input[type="text"]:focus::placeholder {
+  color: transparent;
+}
+
+input[type="submit"] {
+  background-color: var(--submit-color);
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--article-content-color);
+  box-shadow: 0px 1px 2px var(--box-shadow-color), 0px 2px 4px var(--app-border-color), 0px 1px 8px var(--shadow-color);
+}
+
+input[type="submit"]:hover {
+  background-color: var(--submit-background-color);
+  border: none;
+  color: var(--article-content-color);
+}
+
+input[type="submit"]:focus {
+  background-color: var(--submit-focus-color);
+}
+
+.form-check {
+  text-align: center;
+  margin-left: -130px;
+  color: var(--app-input-color);
+}
+
+/*
+.facebook,
+.vk,
+.g {
+  margin-right: 20px;
+}
+*/

@@ -1,27 +1,31 @@
-.row
-  .col-md-5.offset-sm-1
-    h3 Edit #{resource_name.to_s.humanize}
+body.app
+    h1.app-title-registration Daily Tracker
+    //h3 Edit #{resource_name.to_s.humanize}
     = simple_form_for resource, as: resource_name, url: registration_path(resource_name), wrapper: :horizontal_form, html: { method: :put, class: 'form-horizontal' } do |f|
       = render "devise/shared/error_messages", resource: resource
-      = f.input :email, autofocus: true, autocomplete: "email"
+      = field_set_tag 'Email' do
+       = f.email_field 'email', autofocus: true, autocomplete: "email"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
       i 
-        | (leave blank if you don't want to change it)    
-      = f.input :password, autocomplete: 'new-password'
-      - if @minimum_password_length
-        em 
-          = @minimum_password_length
-          |  characters minimum
-      = f.input :password_confirmation, autocomplete: "new-password", label: 'Password confirmation'
+      = field_set_tag 'Password' do
+        = f.password_field 'password', placeholder: "At last 6 simbols...", autocomplete: 'new-password' 
+         - if @minimum_password_length
+         em 
+           = @minimum_password_length
+           |  characters minimum
+      = field_set_tag 'Password' do
+        = f.password_field 'password_confirmation', placeholder: "Repeat password confirmation", autocomplete: 'new-password'        
       i 
-        | (we need your current password to confirm your changes)      
-      = f.input :current_password, autocomplete: "current-password", label: 'Current password'
-      = f.input :first_name, autocomplete: "first_name"
-      = f.input :last_name, autocomplete: "last_name"
-      = f.button :submit, 'Update', class: 'btn-primary'
-    h3 Cancel my account
-    p
-      | Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}      
-    = link_to "Back", :back
+      = field_set_tag 'Password' do
+        = f.password_field 'current_password', placeholder: "Current password", autocomplete: 'current-password'
+      = field_set_tag 'First name' do
+        = f.text_field :first_name, placeholder: "Your name", autocomplete: "first_name"
+      = field_set_tag 'Last name' do
+        = f.text_field :last_name, placeholder: "Your last name", autocomplete: "last_name"
+      = f.button :submit, 'Update'
+    //h3 Cancel my account
+    //p
+    //  | Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}      
+    //= button_to "Back", :back
